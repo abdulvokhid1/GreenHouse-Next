@@ -152,7 +152,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 	const updatePropertyHandler = useCallback(async () => {
 		try {
 			//@ts-ignore
-			insertPropertyData?._id = getPropertyData?.getProperty?._id;
+			insertPropertyData._id = getPropertyData?.getProperty?._id;
 			const result = await updateProperty({
 				variables: {
 					input: insertPropertyData,
