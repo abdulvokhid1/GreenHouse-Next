@@ -42,8 +42,8 @@ const AdminCommunity: NextPage = ({ initialInquiry, ...props }: any) => {
 		variables: { input: communityInquiry },
 		notifyOnNetworkStatusChange: true,
 		onCompleted: (data: T) => {
-			setArticles(data?.getAllBoardArticleByAdmin?.list);
-			setArticleTotal(data?.getAllBoardArticleByAdmin?.metaCounter[0]?.total ?? 0);
+			setArticles(data?.getAllBoardArticlesByAdmin?.list);
+			setArticleTotal(data?.getAllBoardArticlesByAdmin?.metaCounter[0]?.total ?? 0);
 		},
 	});
 	/** LIFECYCLES **/
