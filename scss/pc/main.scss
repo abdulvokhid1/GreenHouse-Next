@@ -175,8 +175,87 @@ body::-webkit-scrollbar {
 		position: relative;
 		width: 100%;
 		height: 860px;
-		background-image: url('/img/banner/header1.svg');
-		background-size: cover;
+		background-color: #fafafa;
+		// background-image: url('/img/banner/header1.svg');
+		// background-size: cover;
+		border: 1px solid red;
+
+		.main-header {
+			color: black;
+			border: 1px solid red;
+			margin: 120px;
+			height: 450px;
+			width: 1200px;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+
+			.mainheader-1 {
+				display: flex;
+				flex-direction: column;
+				width: 600px;
+				height: 450px;
+				border: 1px solid red;
+
+				.bigletter {
+					font-family: Cera Pro;
+					font-size: 70px;
+					font-weight: 900;
+					line-height: 70px;
+					text-align: left;
+					color: #3d3d3d;
+					margin-top: 10px;
+				}
+
+				.bigletterdifferent {
+					font-size: 70px;
+					font-weight: 900;
+					line-height: 70px;
+					text-align: left;
+					color: #45a358;
+				}
+
+				.description {
+					font-family: Cera Pro;
+					font-size: 14px;
+					font-weight: 400;
+					line-height: 24px;
+					text-align: left;
+					color: #727272;
+					width: 557px;
+					margin-top: 10px;
+				}
+
+				.shopbtn {
+					margin-top: 60px;
+					width: 87px;
+					height: 20px;
+				}
+			}
+			.mainheader-2 {
+				position: relative;
+				display: flex;
+				flex-direction: row;
+				width: 600px;
+				border: 1px solid red;
+
+				.bigflower {
+					position: absolute;
+					bottom: -45px;
+					left: 70px;
+					width: 518px;
+					height: 518px;
+				}
+				.smallflower {
+					position: absolute;
+					width: 135px;
+					height: 135px;
+					top: 300px;
+					left: 140px;
+				}
+			}
+		}
+
 		.container {
 			position: relative;
 			margin-top: 20px;
@@ -184,7 +263,7 @@ body::-webkit-scrollbar {
 			align-items: center;
 			.search-box {
 				position: relative;
-				margin-top: 56px;
+				margin-top: -16px;
 				padding: 16px 29px;
 				width: 1094px;
 				height: 96px;
@@ -193,6 +272,7 @@ body::-webkit-scrollbar {
 				justify-content: space-between;
 				background: rgba(255, 255, 255, 0.28);
 				border-radius: 12px;
+				border: 1px solid red;
 				.select-box {
 					width: 712px;
 					display: flex;
