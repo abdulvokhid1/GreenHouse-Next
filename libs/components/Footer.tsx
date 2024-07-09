@@ -5,6 +5,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import useDeviceDetect from '../hooks/useDeviceDetect';
 import { Stack, Box } from '@mui/material';
 import moment from 'moment';
+import { Margin } from '@mui/icons-material';
 
 const Footer = () => {
 	const device = useDeviceDetect();
@@ -70,7 +71,7 @@ const Footer = () => {
 	} else {
 		return (
 			<Stack className={'footer-container'}>
-				<Stack className={'main'}>
+				{/* <Stack className={'main'}>
 					<Stack className={'left'}>
 						<Box component={'div'} className={'footer-box'}>
 							<img src="/img/logo/logoWhite.svg" alt="" className={'logo'} />
@@ -130,7 +131,117 @@ const Footer = () => {
 				<Stack className={'second'}>
 					<span>© Nestar - All rights reserved. Nestar {moment().year()}</span>
 					<span>Privacy · Terms · Sitemap</span>
+				</Stack> */}
+				<Stack className={'main'}>
+					<Stack className={'plant-info'}>
+						<Box className={'plant-care'}>
+							<img style={{ width: '85px', height: '85px', marginLeft: '10px' }} src="/img/flag/garden.svg" alt="" />
+							<h4>Garden Care</h4>
+							<p>We are an online plant shop offering a wide range of cheap and trendy plants.</p>
+						</Box>
+						<div style={{ border: '1px solid #45a358', height: '187px', marginTop: '15px' }}></div>{' '}
+						<Box className={'plant-care'}>
+							<img style={{ width: '85px', height: '85px', marginLeft: '10px' }} src="/img/icons/fat.svg" alt="" />
+							<h4>Plant Renovation</h4>
+							<p>We are an online plant shop offering a wide range of cheap and trendy plants.</p>
+						</Box>
+						<div style={{ border: '1px solid #45a358', height: '187px', marginTop: '15px' }}></div>
+						<Box className={'plant-care'}>
+							<img style={{ width: '85px', height: '85px', marginLeft: '10px' }} src="/img/flag/garden.svg" alt="" />
+							<h4>Watering Graden</h4>
+							<p>We are an online plant shop offering a wide range of cheap and trendy plants.</p>
+						</Box>
+						<div style={{ border: '1px solid #45a358', height: '187px', marginTop: '15px' }}></div>
+						<Stack className={'newsletter'}>
+							<h4>Would you like to join newsletters?</h4>
+							<Box style={{ marginTop: '15px' }}>
+								<input
+									type="text"
+									placeholder="Enter your email address..."
+									style={{ width: '254px', height: '40px', border: 'none' }}
+								/>
+								<button
+									style={{
+										width: '85px',
+										height: '40px',
+										color: 'white',
+										backgroundColor: '#45a358',
+										border: 'none',
+										fontFamily: 'Cera Pro',
+										fontSize: '17px',
+										fontWeight: '700px',
+										lineHeight: '16px',
+									}}
+								>
+									Subscribe
+								</button>
+							</Box>
+							<p className="some-txt">
+								We usually post offers and challenges in newsletter. We’re your online houseplant destination. We offer
+								a wide range of houseplants and accessories shipped directly from our (green)house to yours!
+							</p>
+						</Stack>
+					</Stack>
+					<Stack className={'contact'}>
+						<div style={{ marginLeft: '20px' }}>
+							<img src="/img/logo/Logo.png" alt="" />
+						</div>
+						<Box className={'contact-box'}>
+							<img src="/img/icons/Location.png" alt="" className="icon" />
+							<div style={{ width: '176px', height: '44px' }}>
+								<p>70 West Buckingham Ave. Farmingdale, NY 11735</p>
+							</div>
+						</Box>
+						<Box className={'contact-box'}>
+							<img src="/img/icons/message.png" alt="" className="icon" />
+							<p>contact@greenshop.com</p>
+						</Box>
+						<Box className={'contact-box'}>
+							<img src="/img/icons/calling.png" alt="" className="icon" />
+							<p>+821055049698</p>
+						</Box>
+					</Stack>
+					<Stack className={'category'}>
+						<Box className={'first-box'}>
+							<h1>My Account</h1>
+							<p>My Account</p>
+							<p>Our stores</p>
+							<p>Contact us</p>
+							<p>Career</p>
+							<p>Specials</p>
+						</Box>
+						<Box className={'first-box'}>
+							<h1>Help & Guide</h1>
+							<p>Help Center</p>
+							<p>How to Buy</p>
+							<p>Shipping & Delivery</p>
+							<p>Product Policy</p>
+							<p>How to Return</p>
+						</Box>
+
+						<Box className={'first-box'}>
+							<h1>Categories</h1>
+							<p>House Plants</p>
+							<p>Seeds</p>
+							<p>Small Plants</p>
+							<p>Career</p>
+							<p>Accessories</p>
+						</Box>
+						<Box className={'last-box'}>
+							<h1>Social Media</h1>
+							<Box className={'media'}>
+								<img className="social" src="/img/icons/facebook.png" alt="" />
+								<img className="social" src="/img/icons/instagram.png" alt="" />
+								<img className="social" src="/img/icons/twitter.png" alt="" />
+								<img className="social" src="/img/icons/linkedin.png" alt="" />
+								<img className="social" src="/img/icons/union.png" alt="" />
+							</Box>
+							<h1 style={{ marginTop: '25px' }}>We Accept</h1>
+							<img src="/img/icons/payment.png" alt="" style={{ marginTop: '20px' }} />
+						</Box>
+					</Stack>
 				</Stack>
+				<div className="reserved">© 2024 GreenShop. All Rights Reserved.</div>
 			</Stack>
 		);
 	}

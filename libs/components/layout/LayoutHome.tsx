@@ -73,7 +73,12 @@ const withLayoutMain = (Component: any) => {
 										We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to
 										create an unique Urban Jungle. Order your favorite plants!
 									</p>
-									<button className="shopbtn">SHOP NOW</button>
+									<button className="shopbtn">
+										{' '}
+										<a style={{ color: 'white' }} href="/property">
+											SHOP NOW
+										</a>
+									</button>
 								</div>
 								<div className="mainheader-2">
 									<img className="smallflower" src="/img/property/small.png" alt="" />
