@@ -17,14 +17,17 @@ export const SIGN_UP = gql`
 			memberImage
 			memberAddress
 			memberDesc
-			memberWarnings
-			memberBlocks
 			memberProperties
-			memberRank
 			memberArticles
+			memberFollowers
+			memberFollowings
 			memberPoints
 			memberLikes
 			memberViews
+			memberComments
+			memberRank
+			memberWarnings
+			memberBlocks
 			deletedAt
 			createdAt
 			updatedAt
@@ -46,13 +49,17 @@ export const LOGIN = gql`
 			memberImage
 			memberAddress
 			memberDesc
-			memberWarnings
-			memberBlocks
 			memberProperties
-			memberRank
+			memberArticles
+			memberFollowers
+			memberFollowings
 			memberPoints
 			memberLikes
 			memberViews
+			memberComments
+			memberRank
+			memberWarnings
+			memberBlocks
 			deletedAt
 			createdAt
 			updatedAt
@@ -75,11 +82,14 @@ export const UPDATE_MEMBER = gql`
 			memberAddress
 			memberDesc
 			memberProperties
-			memberRank
 			memberArticles
+			memberFollowers
+			memberFollowings
 			memberPoints
 			memberLikes
 			memberViews
+			memberComments
+			memberRank
 			memberWarnings
 			memberBlocks
 			deletedAt
@@ -103,13 +113,17 @@ export const LIKE_TARGET_MEMBER = gql`
 			memberImage
 			memberAddress
 			memberDesc
-			memberWarnings
-			memberBlocks
 			memberProperties
-			memberRank
+			memberArticles
+			memberFollowers
+			memberFollowings
 			memberPoints
 			memberLikes
 			memberViews
+			memberComments
+			memberRank
+			memberWarnings
+			memberBlocks
 			deletedAt
 			createdAt
 			updatedAt
@@ -128,19 +142,17 @@ export const CREATE_PROPERTY = gql`
 			_id
 			propertyType
 			propertyStatus
-			propertyLocation
+			propertyCategories
 			propertyAddress
 			propertyTitle
 			propertyPrice
-			propertySquare
-			propertyBeds
-			propertyRooms
+			propertyDiscountPrice
 			propertyViews
 			propertyLikes
+			propertyComments
+			propertyRank
 			propertyImages
 			propertyDesc
-			propertyBarter
-			propertyRent
 			memberId
 			soldAt
 			deletedAt
@@ -157,19 +169,17 @@ export const UPDATE_PROPERTY = gql`
 			_id
 			propertyType
 			propertyStatus
-			propertyLocation
+			propertyCategories
 			propertyAddress
 			propertyTitle
 			propertyPrice
-			propertySquare
-			propertyBeds
-			propertyRooms
+			propertyDiscountPrice
 			propertyViews
 			propertyLikes
+			propertyComments
+			propertyRank
 			propertyImages
 			propertyDesc
-			propertyBarter
-			propertyRent
 			memberId
 			soldAt
 			deletedAt
@@ -186,19 +196,17 @@ export const LIKE_TARGET_PROPERTY = gql`
 			_id
 			propertyType
 			propertyStatus
-			propertyLocation
+			propertyCategories
 			propertyAddress
 			propertyTitle
 			propertyPrice
-			propertySquare
-			propertyBeds
-			propertyRooms
+			propertyDiscountPrice
 			propertyViews
 			propertyLikes
+			propertyComments
+			propertyRank
 			propertyImages
 			propertyDesc
-			propertyBarter
-			propertyRent
 			memberId
 			soldAt
 			deletedAt
@@ -224,6 +232,7 @@ export const CREATE_BOARD_ARTICLE = gql`
 			articleImage
 			articleViews
 			articleLikes
+			articleComments
 			memberId
 			createdAt
 			updatedAt
@@ -242,6 +251,7 @@ export const UPDATE_BOARD_ARTICLE = gql`
 			articleImage
 			articleViews
 			articleLikes
+			articleComments
 			memberId
 			createdAt
 			updatedAt
@@ -260,6 +270,7 @@ export const LIKE_TARGET_BOARD_ARTICLE = gql`
 			articleImage
 			articleViews
 			articleLikes
+			articleComments
 			memberId
 			createdAt
 			updatedAt

@@ -18,13 +18,17 @@ export const GET_AGENTS = gql`
 				memberImage
 				memberAddress
 				memberDesc
-				memberWarnings
-				memberBlocks
 				memberProperties
-				memberRank
+				memberArticles
+				memberFollowers
+				memberFollowings
 				memberPoints
 				memberLikes
 				memberViews
+				memberComments
+				memberRank
+				memberWarnings
+				memberBlocks
 				deletedAt
 				createdAt
 				updatedAt
@@ -43,7 +47,7 @@ export const GET_AGENTS = gql`
 `;
 
 export const GET_MEMBER = gql(`
- query GetMember($input: String!) {
+query GetMember($input: String!) {
     getMember(memberId: $input) {
         _id
         memberType
@@ -57,11 +61,12 @@ export const GET_MEMBER = gql(`
         memberDesc
         memberProperties
         memberArticles
+        memberFollowers
+        memberFollowings
         memberPoints
         memberLikes
         memberViews
-        memberFollowings
-				memberFollowers
+        memberComments
         memberRank
         memberWarnings
         memberBlocks
@@ -70,10 +75,10 @@ export const GET_MEMBER = gql(`
         updatedAt
         accessToken
         meFollowed {
-					followingId
-					followerId
-					myFollowing
-				}
+            followingId
+            followerId
+            myFollowing
+        }
     }
 }
 `);
@@ -88,19 +93,17 @@ export const GET_PROPERTY = gql`
 			_id
 			propertyType
 			propertyStatus
-			propertyLocation
+			propertyCategories
 			propertyAddress
 			propertyTitle
 			propertyPrice
-			propertySquare
-			propertyBeds
-			propertyRooms
+			propertyDiscountPrice
 			propertyViews
 			propertyLikes
+			propertyComments
+			propertyRank
 			propertyImages
 			propertyDesc
-			propertyBarter
-			propertyRent
 			memberId
 			soldAt
 			deletedAt
@@ -118,11 +121,17 @@ export const GET_PROPERTY = gql`
 				memberImage
 				memberAddress
 				memberDesc
-				memberWarnings
-				memberBlocks
+				memberProperties
+				memberArticles
+				memberFollowers
+				memberFollowings
 				memberPoints
 				memberLikes
 				memberViews
+				memberComments
+				memberRank
+				memberWarnings
+				memberBlocks
 				deletedAt
 				createdAt
 				updatedAt
@@ -144,27 +153,23 @@ export const GET_PROPERTIES = gql`
 				_id
 				propertyType
 				propertyStatus
-				propertyLocation
+				propertyCategories
 				propertyAddress
 				propertyTitle
 				propertyPrice
-				propertySquare
-				propertyBeds
-				propertyRooms
 				propertyViews
 				propertyLikes
 				propertyComments
 				propertyRank
 				propertyImages
 				propertyDesc
-				propertyBarter
-				propertyRent
 				memberId
 				soldAt
 				deletedAt
 				constructedAt
 				createdAt
 				updatedAt
+				propertyDiscountPrice
 				meLiked {
 					memberId
 					likeRefId
@@ -212,25 +217,54 @@ export const GET_AGENT_PROPERTIES = gql`
 				_id
 				propertyType
 				propertyStatus
-				propertyLocation
+				propertyCategories
 				propertyAddress
 				propertyTitle
 				propertyPrice
-				propertySquare
-				propertyBeds
-				propertyRooms
 				propertyViews
 				propertyLikes
+				propertyComments
+				propertyRank
 				propertyImages
 				propertyDesc
-				propertyBarter
-				propertyRent
 				memberId
 				soldAt
 				deletedAt
 				constructedAt
 				createdAt
 				updatedAt
+				meLiked {
+					memberId
+					likeRefId
+					myFavorite
+				}
+				memberData {
+					_id
+					memberType
+					memberStatus
+					memberAuthType
+					memberPhone
+					memberNick
+					memberFullName
+					memberImage
+					memberAddress
+					memberDesc
+					memberProperties
+					memberArticles
+					memberFollowers
+					memberFollowings
+					memberPoints
+					memberLikes
+					memberViews
+					memberComments
+					memberRank
+					memberWarnings
+					memberBlocks
+					deletedAt
+					createdAt
+					updatedAt
+					accessToken
+				}
 			}
 			metaCounter {
 				total
@@ -246,21 +280,17 @@ export const GET_FAVORITES = gql`
 				_id
 				propertyType
 				propertyStatus
-				propertyLocation
+				propertyCategories
 				propertyAddress
 				propertyTitle
 				propertyPrice
-				propertySquare
-				propertyBeds
-				propertyRooms
+				propertyDiscountPrice
 				propertyViews
 				propertyLikes
 				propertyComments
 				propertyRank
 				propertyImages
 				propertyDesc
-				propertyBarter
-				propertyRent
 				memberId
 				soldAt
 				deletedAt
@@ -280,12 +310,12 @@ export const GET_FAVORITES = gql`
 					memberDesc
 					memberProperties
 					memberArticles
+					memberFollowers
+					memberFollowings
 					memberPoints
 					memberLikes
 					memberViews
 					memberComments
-					memberFollowings
-					memberFollowers
 					memberRank
 					memberWarnings
 					memberBlocks
@@ -309,21 +339,17 @@ export const GET_VISITED = gql`
 				_id
 				propertyType
 				propertyStatus
-				propertyLocation
+				propertyCategories
 				propertyAddress
 				propertyTitle
 				propertyPrice
-				propertySquare
-				propertyBeds
-				propertyRooms
+				propertyDiscountPrice
 				propertyViews
 				propertyLikes
 				propertyComments
 				propertyRank
 				propertyImages
 				propertyDesc
-				propertyBarter
-				propertyRent
 				memberId
 				soldAt
 				deletedAt
@@ -343,12 +369,12 @@ export const GET_VISITED = gql`
 					memberDesc
 					memberProperties
 					memberArticles
+					memberFollowers
+					memberFollowings
 					memberPoints
 					memberLikes
 					memberViews
 					memberComments
-					memberFollowings
-					memberFollowers
 					memberRank
 					memberWarnings
 					memberBlocks
@@ -395,16 +421,21 @@ export const GET_BOARD_ARTICLE = gql`
 				memberImage
 				memberAddress
 				memberDesc
-				memberWarnings
-				memberBlocks
 				memberProperties
-				memberRank
+				memberArticles
+				memberFollowers
+				memberFollowings
 				memberPoints
 				memberLikes
 				memberViews
+				memberComments
+				memberRank
+				memberWarnings
+				memberBlocks
 				deletedAt
 				createdAt
 				updatedAt
+				accessToken
 			}
 			meLiked {
 				memberId
@@ -447,16 +478,21 @@ export const GET_BOARD_ARTICLES = gql`
 					memberImage
 					memberAddress
 					memberDesc
-					memberWarnings
-					memberBlocks
 					memberProperties
-					memberRank
+					memberArticles
+					memberFollowers
+					memberFollowings
 					memberPoints
 					memberLikes
 					memberViews
+					memberComments
+					memberRank
+					memberWarnings
+					memberBlocks
 					deletedAt
 					createdAt
 					updatedAt
+					accessToken
 				}
 			}
 			metaCounter {
@@ -493,13 +529,17 @@ export const GET_COMMENTS = gql`
 					memberImage
 					memberAddress
 					memberDesc
-					memberWarnings
-					memberBlocks
 					memberProperties
-					memberRank
+					memberArticles
+					memberFollowers
+					memberFollowings
 					memberPoints
 					memberLikes
 					memberViews
+					memberComments
+					memberRank
+					memberWarnings
+					memberBlocks
 					deletedAt
 					createdAt
 					updatedAt
@@ -525,15 +565,15 @@ export const GET_MEMBER_FOLLOWERS = gql`
 				followerId
 				createdAt
 				updatedAt
-				meLiked {
-					memberId
-					likeRefId
-					myFavorite
-				}
 				meFollowed {
 					followingId
 					followerId
 					myFollowing
+				}
+				meLiked {
+					memberId
+					likeRefId
+					myFavorite
 				}
 				followerData {
 					_id
@@ -548,18 +588,19 @@ export const GET_MEMBER_FOLLOWERS = gql`
 					memberDesc
 					memberProperties
 					memberArticles
+					memberFollowers
+					memberFollowings
 					memberPoints
 					memberLikes
 					memberViews
 					memberComments
-					memberFollowings
-					memberFollowers
 					memberRank
 					memberWarnings
 					memberBlocks
 					deletedAt
 					createdAt
 					updatedAt
+					accessToken
 				}
 			}
 			metaCounter {
@@ -591,12 +632,12 @@ export const GET_MEMBER_FOLLOWINGS = gql`
 					memberDesc
 					memberProperties
 					memberArticles
+					memberFollowers
+					memberFollowings
 					memberPoints
 					memberLikes
 					memberViews
 					memberComments
-					memberFollowings
-					memberFollowers
 					memberRank
 					memberWarnings
 					memberBlocks
@@ -604,16 +645,16 @@ export const GET_MEMBER_FOLLOWINGS = gql`
 					createdAt
 					updatedAt
 					accessToken
-				}
-				meLiked {
-					memberId
-					likeRefId
-					myFavorite
-				}
-				meFollowed {
-					followingId
-					followerId
-					myFollowing
+					meLiked {
+						memberId
+						likeRefId
+						myFavorite
+					}
+					meFollowed {
+						followingId
+						followerId
+						myFollowing
+					}
 				}
 			}
 			metaCounter {

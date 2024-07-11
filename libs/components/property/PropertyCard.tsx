@@ -65,36 +65,36 @@ const PropertyCard = (props: PropertyCardType) => {
 						</Stack>
 						<Stack className="address">
 							<Typography>
-								{property.propertyAddress}, {property.propertyLocation}
+								{property.propertyAddress}, {property.propertyCategories}
 							</Typography>
 						</Stack>
 					</Stack>
 					<Stack className="options">
-						<Stack className="option">
+						{/* <Stack className="option">
 							<img src="/img/icons/bed.svg" alt="" /> <Typography>{property.propertyBeds} bed</Typography>
 						</Stack>
 						<Stack className="option">
 							<img src="/img/icons/room.svg" alt="" /> <Typography>{property.propertyRooms} room</Typography>
-						</Stack>
+						</Stack> */}
 						<Stack className="option">
-							<img src="/img/icons/expand.svg" alt="" /> <Typography>{property.propertySquare} m2</Typography>
+							<img src="/img/icons/expand.svg" alt="" /> <Typography>{property.propertyDiscountPrice} m2</Typography>
 						</Stack>
 					</Stack>
 					<Stack className="divider"></Stack>
 					<Stack className="type-buttons">
 						<Stack className="type">
-							<Typography
+							{/* <Typography
 								sx={{ fontWeight: 500, fontSize: '13px' }}
 								className={property.propertyRent ? '' : 'disabled-type'}
 							>
 								Rent
-							</Typography>
-							<Typography
+							</Typography> */}
+							{/* <Typography
 								sx={{ fontWeight: 500, fontSize: '13px' }}
 								className={property.propertyBarter ? '' : 'disabled-type'}
 							>
 								Barter
-							</Typography>
+							</Typography> */}
 						</Stack>
 						{!recentlyVisited && (
 							<Stack className="buttons">

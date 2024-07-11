@@ -1,20 +1,16 @@
-import { PropertyLocation, PropertyStatus, PropertyType } from '../../enums/property.enum';
+import { PropertyCategories, PropertyStatus, PropertyType } from '../../enums/property.enum';
 
 export interface PropertyUpdate {
 	_id: string;
 	propertyType?: PropertyType;
 	propertyStatus?: PropertyStatus;
-	propertyLocation?: PropertyLocation;
+	propertyCategories?: PropertyCategories;
 	propertyAddress?: string;
 	propertyTitle?: string;
 	propertyPrice?: number;
-	propertySquare?: number;
-	propertyBeds?: number;
-	propertyRooms?: number;
+	propertyDiscountPrice?: number;
 	propertyImages?: string[];
 	propertyDesc?: string;
-	propertyBarter?: boolean;
-	propertyRent?: boolean;
 	soldAt?: Date;
 	deletedAt?: Date;
 	constructedAt?: Date;

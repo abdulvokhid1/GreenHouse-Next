@@ -25,7 +25,7 @@ interface Data {
 	title: string;
 	price: string;
 	agent: string;
-	location: string;
+	categories: string;
 	type: string;
 	status: string;
 }
@@ -65,10 +65,10 @@ const headCells: readonly HeadCell[] = [
 		label: 'AGENT',
 	},
 	{
-		id: 'location',
+		id: 'categories',
 		numeric: false,
 		disablePadding: false,
-		label: 'LOCATION',
+		label: 'CATEGORIES',
 	},
 	{
 		id: 'type',
@@ -177,7 +177,7 @@ export const PropertyPanelList = (props: PropertyPanelListType) => {
 										</TableCell>
 										<TableCell align="center">{property.propertyPrice}</TableCell>
 										<TableCell align="center">{property.memberData?.memberNick}</TableCell>
-										<TableCell align="center">{property.propertyLocation}</TableCell>
+										<TableCell align="center">{property.propertyCategories}</TableCell>
 										<TableCell align="center">{property.propertyType}</TableCell>
 										<TableCell align="center">
 											{property.propertyStatus === PropertyStatus.DELETE && (

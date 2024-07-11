@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Button, Stack, Typography } from '@mui/material';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
-import { PropertyLocation, PropertyType } from '../../enums/property.enum';
+import { PropertyCategories, PropertyType } from '../../enums/property.enum';
 import { REACT_APP_API_URL, propertySquare } from '../../config';
 import { PropertyInput } from '../../types/property/property.input';
 import axios from 'axios';
@@ -19,7 +19,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 	const inputRef = useRef<any>(null);
 	const [insertPropertyData, setInsertPropertyData] = useState<PropertyInput>(initialValues);
 	const [propertyType, setPropertyType] = useState<PropertyType[]>(Object.values(PropertyType));
-	const [propertyLocation, setPropertyLocation] = useState<PropertyLocation[]>(Object.values(PropertyLocation));
+	const [propertyLocation, setPropertyLocation] = useState<PropertyCategories[]>(Object.values(PropertyCategories));
 	const token = getJwtToken();
 	const user = useReactiveVar(userVar);
 
@@ -46,13 +46,13 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 			propertyTitle: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyTitle : '',
 			propertyPrice: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyPrice : 0,
 			propertyType: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyType : '',
-			propertyLocation: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyLocation : '',
+			propertyCategories: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyCategories : '',
 			propertyAddress: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyAddress : '',
-			propertyBarter: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyBarter : false,
-			propertyRent: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyRent : false,
-			propertyRooms: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyRooms : 0,
-			propertyBeds: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyBeds : 0,
-			propertySquare: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertySquare : 0,
+			// propertyBarter: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyBarter : false,
+			// propertyRent: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyRent : false,
+			// propertyRooms: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyRooms : 0,
+			// propertyBeds: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyBeds : 0,
+			propertyDiscountPrice: getPropertyData?.getProperty ? getPropertyData?.getProperty?.discountPrice : 0,
 			propertyDesc: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyDesc : '',
 			propertyImages: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyImages : [],
 		});
@@ -116,13 +116,13 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 			insertPropertyData.propertyTitle === '' ||
 			insertPropertyData.propertyPrice === 0 || // @ts-ignore
 			insertPropertyData.propertyType === '' || // @ts-ignore
-			insertPropertyData.propertyLocation === '' || // @ts-ignore
+			insertPropertyData.propertyCategories === '' || // @ts-ignore
 			insertPropertyData.propertyAddress === '' || // @ts-ignore
 			insertPropertyData.propertyBarter === '' || // @ts-ignore
-			insertPropertyData.propertyRent === '' ||
-			insertPropertyData.propertyRooms === 0 ||
-			insertPropertyData.propertyBeds === 0 ||
-			insertPropertyData.propertySquare === 0 ||
+			// insertPropertyData.propertyRent === '' ||
+			// insertPropertyData.propertyRooms === 0 ||
+			// insertPropertyData.propertyBeds === 0 ||
+			insertPropertyData.propertyDiscountPrice === 0 ||
 			insertPropertyData.propertyDesc === '' ||
 			insertPropertyData.propertyImages.length === 0
 		) {
@@ -244,23 +244,23 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 
 							<Stack className="config-row">
 								<Stack className="price-year-after-price">
-									<Typography className="title">Select Location</Typography>
+									<Typography className="title">Select Category</Typography>
 									<select
 										className={'select-description'}
-										defaultValue={insertPropertyData.propertyLocation || 'select'}
-										value={insertPropertyData.propertyLocation || 'select'}
+										defaultValue={insertPropertyData.propertyCategories || 'select'}
+										value={insertPropertyData.propertyCategories || 'select'}
 										onChange={({ target: { value } }) =>
 											// @ts-ignore
-											setInsertPropertyData({ ...insertPropertyData, propertyLocation: value })
+											setInsertPropertyData({ ...insertPropertyData, propertyCategories: value })
 										}
 									>
 										<>
 											<option selected={true} disabled={true} value={'select'}>
 												Select
 											</option>
-											{propertyLocation.map((location: any) => (
-												<option value={`${location}`} key={location}>
-													{location}
+											{PropertyCategories.map((category: any) => (
+												<option value={`${category}`} key={category}>
+													{category}
 												</option>
 											))}
 										</>
@@ -282,7 +282,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 								</Stack>
 							</Stack>
 
-							<Stack className="config-row">
+							{/* <Stack className="config-row">
 								<Stack className="price-year-after-price">
 									<Typography className="title">Barter</Typography>
 									<select
@@ -386,7 +386,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 									<div className={'divider'}></div>
 									<img src={'/img/icons/Vector.svg'} className={'arrow-down'} />
 								</Stack>
-							</Stack>
+							</Stack> */}
 
 							<Typography className="property-title">Property Description</Typography>
 							<Stack className="config-column">
@@ -516,13 +516,13 @@ AddProperty.defaultProps = {
 		propertyTitle: '',
 		propertyPrice: 0,
 		propertyType: '',
-		propertyLocation: '',
+		PropertyCategories: '',
 		propertyAddress: '',
-		propertyBarter: false,
-		propertyRent: false,
-		propertyRooms: 0,
-		propertyBeds: 0,
-		propertySquare: 0,
+		// propertyBarter: false,
+		// propertyRent: false,
+		// propertyRooms: 0,
+		// propertyBeds: 0,
+		propertyDiscountPrice: 0,
 		propertyDesc: '',
 		propertyImages: [],
 	},

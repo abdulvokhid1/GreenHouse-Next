@@ -50,7 +50,7 @@ const PropertyBigCard = (props: PropertyBigCardProps) => {
 					<strong className={'title'}>{property?.propertyTitle}</strong>
 					<p className={'desc'}>{property?.propertyAddress}</p>
 					<div className={'options'}>
-						<div>
+						{/* <div>
 							<img src="/img/icons/bed.svg" alt="" />
 							<span>{property?.propertyBeds} bed</span>
 						</div>
@@ -61,14 +61,14 @@ const PropertyBigCard = (props: PropertyBigCardProps) => {
 						<div>
 							<img src="/img/icons/expand.svg" alt="" />
 							<span>{property?.propertySquare} m2</span>
-						</div>
+						</div> */}
 					</div>
 					<Divider sx={{ mt: '15px', mb: '17px' }} />
 					<div className={'bott'}>
-						<div>
+						{/* <div>
 							{property?.propertyRent ? <p>Rent</p> : <span>Rent</span>}
 							{property?.propertyBarter ? <p>Barter</p> : <span>Barter</span>}
-						</div>
+						</div> */}
 						<div className="buttons-box">
 							<IconButton color={'default'}>
 								<RemoveRedEyeIcon />
@@ -76,7 +76,7 @@ const PropertyBigCard = (props: PropertyBigCardProps) => {
 							<Typography className="view-cnt">{property?.propertyViews}</Typography>
 							<IconButton
 								color={'default'}
-								onClick={(e) => {
+								onClick={(e: any) => {
 									e.stopPropagation();
 									likePropertyHandler(user, property?._id);
 								}}
