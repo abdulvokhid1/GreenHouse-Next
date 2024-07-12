@@ -47,7 +47,7 @@ export interface AgentPropertiesInquiry {
 
 interface ALPISearch {
 	propertyStatus?: PropertyStatus;
-	propertyCategoryList?: PropertyCategories[];
+	categoryList?: PropertyCategories[];
 }
 
 export interface AllPropertiesInquiry {

@@ -19,7 +19,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 	const inputRef = useRef<any>(null);
 	const [insertPropertyData, setInsertPropertyData] = useState<PropertyInput>(initialValues);
 	const [propertyType, setPropertyType] = useState<PropertyType[]>(Object.values(PropertyType));
-	const [propertyLocation, setPropertyLocation] = useState<PropertyCategories[]>(Object.values(PropertyCategories));
+	const [propertyCategory, setPropertyCategory] = useState<PropertyCategories[]>(Object.values(PropertyCategories));
 	const token = getJwtToken();
 	const user = useReactiveVar(userVar);
 
@@ -258,7 +258,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 											<option selected={true} disabled={true} value={'select'}>
 												Select
 											</option>
-											{PropertyCategories.map((category: any) => (
+											{propertyCategory.map((category: any) => (
 												<option value={`${category}`} key={category}>
 													{category}
 												</option>

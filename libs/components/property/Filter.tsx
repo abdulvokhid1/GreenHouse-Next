@@ -38,7 +38,7 @@ const Filter = (props: FilterType) => {
 	const { searchFilter, setSearchFilter, initialInput } = props;
 	const device = useDeviceDetect();
 	const router = useRouter();
-	const [propertyLocation, setPropertyLocation] = useState<PropertyCategories[]>(Object.values(PropertyCategories));
+	const [propertyCategory, setPropertyCategory] = useState<PropertyCategories[]>(Object.values(PropertyCategories));
 	const [propertyType, setPropertyType] = useState<PropertyType[]>(Object.values(PropertyType));
 	const [searchText, setSearchText] = useState<string>('');
 	const [showMore, setShowMore] = useState<boolean>(false);
@@ -68,6 +68,7 @@ const Filter = (props: FilterType) => {
 		}
 
 		if (searchFilter?.search?.typeList?.length == 0) {
+			console.log('searchFilter', searchFilter);
 			delete searchFilter.search.typeList;
 			router
 				.push(
@@ -185,7 +186,7 @@ const Filter = (props: FilterType) => {
 							...searchFilter,
 							search: {
 								...searchFilter.search,
-								categoryListv: searchFilter?.search?.categoryList?.filter((item: string) => item !== value),
+								categoryList: searchFilter?.search?.categoryList?.filter((item: string) => item !== value),
 							},
 						})}`,
 						{ scroll: false },
@@ -583,7 +584,7 @@ const Filter = (props: FilterType) => {
 							}
 						}}
 					>
-						{propertyLocation.map((category: string) => {
+						{propertyCategory.map((category: string) => {
 							return (
 								<Stack className={'input-box'} key={category}>
 									<Checkbox
@@ -687,7 +688,7 @@ const Filter = (props: FilterType) => {
 					</Stack>
 				</Stack>
 				<Stack className={'find-your-home'} mb={'30px'}>
-					<Typography className={'title'}>Bedrooms</Typography>
+					{/* <Typography className={'title'}>Bedrooms</Typography> */}
 					<Stack className="button-group">
 						{/* <Button
 							sx={{
@@ -753,7 +754,7 @@ const Filter = (props: FilterType) => {
 				</Stack>
 				<Stack className={'find-your-home'} mb={'30px'}>
 					<Typography className={'title'}>Options</Typography>
-					<Stack className={'input-box'}>
+					{/* <Stack className={'input-box'}>
 						<Checkbox
 							id={'Barter'}
 							className="property-checkbox"
@@ -766,9 +767,9 @@ const Filter = (props: FilterType) => {
 						<label htmlFor={'Barter'} style={{ cursor: 'pointer' }}>
 							<Typography className="propert-type">Barter</Typography>
 						</label>
-					</Stack>
+					</Stack> */}
 					<Stack className={'input-box'}>
-						<Checkbox
+						{/* <Checkbox
 							id={'Rent'}
 							className="property-checkbox"
 							color="default"
@@ -779,7 +780,7 @@ const Filter = (props: FilterType) => {
 						/>
 						<label htmlFor={'Rent'} style={{ cursor: 'pointer' }}>
 							<Typography className="propert-type">Rent</Typography>
-						</label>
+						</label> */}
 					</Stack>
 				</Stack>
 				<Stack className={'find-your-home'} mb={'30px'}>
