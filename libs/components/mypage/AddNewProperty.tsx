@@ -118,7 +118,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 			insertPropertyData.propertyType === '' || // @ts-ignore
 			insertPropertyData.propertyCategories === '' || // @ts-ignore
 			insertPropertyData.propertyAddress === '' || // @ts-ignore
-			insertPropertyData.propertyBarter === '' || // @ts-ignore
+			// insertPropertyData.propertyBarter === '' || // @ts-ignore
 			// insertPropertyData.propertyRent === '' ||
 			// insertPropertyData.propertyRooms === 0 ||
 			// insertPropertyData.propertyBeds === 0 ||
@@ -282,16 +282,16 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 								</Stack>
 							</Stack>
 
-							{/* <Stack className="config-row">
+							<Stack className="config-row">
 								<Stack className="price-year-after-price">
 									<Typography className="title">Barter</Typography>
 									<select
 										className={'select-description'}
-										value={insertPropertyData.propertyBarter ? 'yes' : 'no'}
-										defaultValue={insertPropertyData.propertyBarter ? 'yes' : 'no'}
-										onChange={({ target: { value } }) =>
-											setInsertPropertyData({ ...insertPropertyData, propertyBarter: value === 'yes' })
-										}
+										value={'no'}
+										defaultValue={'no'}
+										// onChange={({ target: { value } }) =>
+										// 	setInsertPropertyData({ ...insertPropertyData, propertyBarter: value === 'yes' })
+										// }
 									>
 										<option disabled={true} selected={true}>
 											Select
@@ -306,11 +306,11 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 									<Typography className="title">Rent</Typography>
 									<select
 										className={'select-description'}
-										value={insertPropertyData.propertyRent ? 'yes' : 'no'}
-										defaultValue={insertPropertyData.propertyRent ? 'yes' : 'no'}
-										onChange={({ target: { value } }) =>
-											setInsertPropertyData({ ...insertPropertyData, propertyRent: value === 'yes' })
-										}
+										value={'no'}
+										defaultValue={'no'}
+										// onChange={({ target: { value } }) =>
+										// 	setInsertPropertyData({ ...insertPropertyData, propertyRent: value === 'yes' })
+										// }
 									>
 										<option disabled={true} selected={true}>
 											Select
@@ -328,11 +328,11 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 									<Typography className="title">Rooms</Typography>
 									<select
 										className={'select-description'}
-										value={insertPropertyData.propertyRooms || 'select'}
-										defaultValue={insertPropertyData.propertyRooms || 'select'}
-										onChange={({ target: { value } }) =>
-											setInsertPropertyData({ ...insertPropertyData, propertyRooms: parseInt(value) })
-										}
+										value={'select'}
+										defaultValue={'select'}
+										// onChange={({ target: { value } }) =>
+										// 	setInsertPropertyData({ ...insertPropertyData, propertyRooms: parseInt(value) })
+										// }
 									>
 										<option disabled={true} selected={true} value={'select'}>
 											Select
@@ -348,11 +348,11 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 									<Typography className="title">Bed</Typography>
 									<select
 										className={'select-description'}
-										value={insertPropertyData.propertyBeds || 'select'}
-										defaultValue={insertPropertyData.propertyBeds || 'select'}
-										onChange={({ target: { value } }) =>
-											setInsertPropertyData({ ...insertPropertyData, propertyBeds: parseInt(value) })
-										}
+										value={'select'}
+										defaultValue={'select'}
+										// onChange={({ target: { value } }) =>
+										// 	setInsertPropertyData({ ...insertPropertyData, propertyBeds: parseInt(value) })
+										// }
 									>
 										<option disabled={true} selected={true} value={'select'}>
 											Select
@@ -368,10 +368,10 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 									<Typography className="title">Square</Typography>
 									<select
 										className={'select-description'}
-										value={insertPropertyData.propertySquare || 'select'}
-										defaultValue={insertPropertyData.propertySquare || 'select'}
+										value={insertPropertyData.propertyDiscountPrice || 'select'}
+										defaultValue={insertPropertyData.propertyDiscountPrice || 'select'}
 										onChange={({ target: { value } }) =>
-											setInsertPropertyData({ ...insertPropertyData, propertySquare: parseInt(value) })
+											setInsertPropertyData({ ...insertPropertyData, propertyDiscountPrice: parseInt(value) })
 										}
 									>
 										<option disabled={true} selected={true} value={'select'}>
@@ -386,7 +386,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 									<div className={'divider'}></div>
 									<img src={'/img/icons/Vector.svg'} className={'arrow-down'} />
 								</Stack>
-							</Stack> */}
+							</Stack>
 
 							<Typography className="property-title">Property Description</Typography>
 							<Stack className="config-column">

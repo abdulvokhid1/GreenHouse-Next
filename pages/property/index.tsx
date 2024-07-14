@@ -53,6 +53,8 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 			setTotal(data?.getProperties?.metaCounter[0]?.total);
 		},
 	});
+	console.log('data', properties);
+
 	/** LIFECYCLES **/
 	useEffect(() => {
 		if (router.query.input) {
@@ -223,14 +225,14 @@ PropertyList.defaultProps = {
 		sort: 'createdAt',
 		direction: 'DESC',
 		search: {
-			discountRange: {
-				start: 0,
-				end: 500,
-			},
-			pricesRange: {
-				start: 0,
-				end: 2000000,
-			},
+			// discountRange: {
+			// 	start: 0,
+			// 	end: 500,
+			// },
+			// pricesRange: {
+			// 	start: 0,
+			// 	end: 2000000,
+			// },
 		},
 	},
 };

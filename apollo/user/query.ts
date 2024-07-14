@@ -157,6 +157,7 @@ export const GET_PROPERTIES = gql`
 				propertyAddress
 				propertyTitle
 				propertyPrice
+				propertyDiscountPrice
 				propertyViews
 				propertyLikes
 				propertyComments
@@ -169,7 +170,6 @@ export const GET_PROPERTIES = gql`
 				constructedAt
 				createdAt
 				updatedAt
-				propertyDiscountPrice
 				meLiked {
 					memberId
 					likeRefId

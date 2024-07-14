@@ -2,45 +2,49 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { useRouter, withRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { getJwtToken, logOut, updateUserInfo } from '../auth';
-import { Stack, Box } from '@mui/material';
+import { getJwtToken, logIn, logOut, signUp, updateUserInfo } from '../auth';
+import { Stack, Box, FormGroup, FormControlLabel, Checkbox } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import { alpha, styled } from '@mui/material/styles';
 import Menu, { MenuProps } from '@mui/material/Menu';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import { CaretDown } from 'phosphor-react';
+import { CaretDown, TextAlignCenter, TextAlignJustify } from 'phosphor-react';
 import useDeviceDetect from '../hooks/useDeviceDetect';
 import Link from 'next/link';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import { useReactiveVar } from '@apollo/client';
 import { userVar } from '../../apollo/store';
-import { Logout } from '@mui/icons-material';
+import { Height, Logout, Margin } from '@mui/icons-material';
 import { REACT_APP_API_URL } from '../config';
 
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { sweetMixinErrorAlert } from '../sweetAlert';
 
 const style = {
 	position: 'absolute' as 'absolute',
 	top: '50%',
 	left: '50%',
 	transform: 'translate(-50%, -50%)',
-	width: 400,
+	width: 500,
 	bgcolor: 'background.paper',
-	border: '2px solid #000',
+	border: 'none',
 	boxShadow: 24,
 	p: 4,
 };
 const Top = () => {
+	const router = useRouter();
+	const device = useDeviceDetect();
+	const [input, setInput] = useState({ nick: '', password: '', phone: '', type: 'USER' });
+	const [loginView, setLoginView] = useState<boolean>(true);
+
 	const [openLog, setOpenLog] = React.useState(false);
 	const handleLOpen = () => setOpenLog(true);
 	const handleLClose = () => setOpenLog(false);
 
-	const device = useDeviceDetect();
 	const user = useReactiveVar(userVar);
 	const { t, i18n } = useTranslation('common');
-	const router = useRouter();
 	const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
 	const [lang, setLang] = useState<string | null>('en');
 	const drop = Boolean(anchorEl2);
@@ -116,6 +120,46 @@ const Top = () => {
 			setAnchorEl(null);
 		}
 	};
+
+	//////
+	const viewChangeHandler = (state: boolean) => {
+		setLoginView(state);
+	};
+
+	const checkUserTypeHandler = (e: any) => {
+		const checked = e.target.checked;
+		if (checked) {
+			const value = e.target.name;
+			handleInput('type', value);
+		} else {
+			handleInput('type', 'USER');
+		}
+	};
+	const handleInput = useCallback((name: any, value: any) => {
+		setInput((prev) => {
+			return { ...prev, [name]: value };
+		});
+	}, []);
+
+	const doLogin = useCallback(async () => {
+		console.warn(input);
+		try {
+			await logIn(input.nick, input.password);
+			await router.push(`${router.query.referrer ?? '/'}`);
+		} catch (err: any) {
+			await sweetMixinErrorAlert(err.message);
+		}
+	}, [input]);
+
+	const doSignUp = useCallback(async () => {
+		console.warn(input);
+		try {
+			await signUp(input.nick, input.password, input.phone, input.type);
+			await router.push(`${router.query.referrer ?? '/'}`);
+		} catch (err: any) {
+			await sweetMixinErrorAlert(err.message);
+		}
+	}, [input]);
 
 	const StyledMenu = styled((props: MenuProps) => (
 		<Menu
@@ -239,14 +283,221 @@ const Top = () => {
 									</Menu>
 								</>
 							) : (
-								<Link href={'/account/join'}>
-									<div className={'join-box'}>
-										<AccountCircleOutlinedIcon />
-										<span>
-											{t('Login')} / {t('Register')}
-										</span>
-									</div>
-								</Link>
+								// <Link href={'/account/join'}>
+								// 	<div className={'join-box'}>
+								// 		<AccountCircleOutlinedIcon />
+								// 		<span>
+								// 			{t('Login')} / {t('Register')}
+								// 		</span>
+								// 	</div>
+								// </Link>
+								<div>
+									<Button onClick={handleLOpen}>Login / Register</Button>
+									<Modal
+										open={openLog}
+										onClose={handleLClose}
+										aria-labelledby="modal-modal-title"
+										aria-describedby="modal-modal-description"
+									>
+										<Box
+											sx={{
+												height: 600,
+												position: 'absolute' as 'absolute',
+												top: '50%',
+												left: '50%',
+												transform: 'translate(-50%, -50%)',
+												width: 500,
+												bgcolor: 'background.paper',
+												border: 'none',
+												boxShadow: 24,
+												p: 4,
+											}}
+										>
+											<Stack sx={{ width: 430, height: 530, display: 'flex' }}>
+												{/* @ts-ignore */}
+												<div
+													style={{
+														alignItems: 'center',
+														textAlign: 'center',
+														justifyContent: 'center',
+													}}
+												>
+													<img src="/img/logo/Logo.png" alt="" style={{ width: '200px' }} />
+												</div>
+												<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+													<span
+														style={{
+															alignItems: 'center',
+															textAlign: 'center',
+															justifyContent: 'center',
+															color: '#45a358',
+															fontWeight: '600px',
+															fontSize: '20px',
+															lineHeight: '46px',
+														}}
+													>
+														{loginView ? 'Login' : 'Signup'}
+													</span>
+												</div>
+												<div
+													style={{
+														display: 'flex',
+														alignItems: 'center',
+														justifyContent: 'center',
+														flexDirection: 'column',
+														gap: '20px',
+														marginTop: '30px',
+													}}
+												>
+													<div>
+														<input
+															style={{ width: '300px', height: '40px' }}
+															type="text"
+															placeholder={'Enter Nickname'}
+															onChange={(e) => handleInput('nick', e.target.value)}
+															required={true}
+															onKeyDown={(event) => {
+																if (event.key == 'Enter' && loginView) doLogin();
+																if (event.key == 'Enter' && !loginView) doSignUp();
+															}}
+														/>
+													</div>
+													<div>
+														<input
+															style={{ width: '300px', height: '40px' }}
+															type="text"
+															placeholder={'Enter Password'}
+															onChange={(e) => handleInput('password', e.target.value)}
+															required={true}
+															onKeyDown={(event) => {
+																if (event.key == 'Enter' && loginView) doLogin();
+																if (event.key == 'Enter' && !loginView) doSignUp();
+															}}
+														/>
+													</div>
+													{!loginView && (
+														<div>
+															<input
+																style={{ width: '300px', height: '40px' }}
+																type="text"
+																placeholder={'Enter Phone'}
+																onChange={(e) => handleInput('phone', e.target.value)}
+																required={true}
+																onKeyDown={(event) => {
+																	if (event.key == 'Enter') doSignUp();
+																}}
+															/>
+														</div>
+													)}
+												</div>
+												<Box className={'register'}>
+													{!loginView && (
+														<div className={'type-option'}>
+															<span style={{ color: '##3D3D3D' }}>I want to be registered as:</span>
+															<div>
+																<FormGroup>
+																	<FormControlLabel
+																		control={
+																			<Checkbox
+																				size="small"
+																				name={'USER'}
+																				onChange={checkUserTypeHandler}
+																				checked={input?.type == 'USER'}
+																			/>
+																		}
+																		label="User"
+																	/>
+																</FormGroup>
+																<FormGroup>
+																	<FormControlLabel
+																		control={
+																			<Checkbox
+																				size="small"
+																				name={'AGENT'}
+																				onChange={checkUserTypeHandler}
+																				checked={input?.type == 'AGENT'}
+																			/>
+																		}
+																		label="Agent"
+																	/>
+																</FormGroup>
+															</div>
+														</div>
+													)}
+
+													{loginView && (
+														<div className={'remember-info'}>
+															<FormGroup>
+																<FormControlLabel
+																	control={<Checkbox defaultChecked size="small" />}
+																	label="Remember me"
+																/>
+															</FormGroup>
+															<a style={{ marginLeft: '280px', color: '#45a358' }}>Forgot password?</a>
+														</div>
+													)}
+
+													{loginView ? (
+														<Button
+															style={{
+																width: '300px',
+																height: '45px',
+																color: 'white',
+																background: '#45a358',
+																left: '62px',
+																top: '30px',
+															}}
+															variant="contained"
+															// endIcon={<img src="/img/icons/rightup.svg" alt="" />}
+															disabled={input.nick == '' || input.password == ''}
+															onClick={doLogin}
+														>
+															LOGIN
+														</Button>
+													) : (
+														<Button
+															style={{
+																width: '300px',
+																height: '45px',
+																color: 'white',
+																background: '#45a358',
+																left: '62px',
+															}}
+															variant="contained"
+															disabled={
+																input.nick == '' || input.password == '' || input.phone == '' || input.type == ''
+															}
+															onClick={doSignUp}
+															// endIcon={<img src="/img/icons/rightup.svg" alt="" />}
+														>
+															SIGNUP
+														</Button>
+													)}
+												</Box>
+												<Box>
+													{loginView ? (
+														<p style={{ marginTop: '40px' }}>
+															Not registered yet?
+															<b
+																onClick={() => {
+																	viewChangeHandler(false);
+																}}
+															>
+																SIGNUP
+															</b>
+														</p>
+													) : (
+														<p style={{ marginTop: '40px' }}>
+															Have account?
+															<b onClick={() => viewChangeHandler(true)}> LOGIN</b>
+														</p>
+													)}
+												</Box>
+											</Stack>
+											<Stack className={'right'}></Stack>
+										</Box>
+									</Modal>
+								</div>
 							)}
 
 							<div className={'lan-box'}>

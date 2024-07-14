@@ -51,7 +51,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 	const [openLocation, setOpenLocation] = useState(false);
 	const [openType, setOpenType] = useState(false);
 	const [openRooms, setOpenRooms] = useState(false);
-	const [propertyCategory, setPropertyCategory] = useState<PropertyCategories[]>(Object.values(PropertyCategories));
+	const [propertyLocation, setPropertyLocation] = useState<PropertyCategories[]>(Object.values(PropertyCategories));
 	const [propertyType, setPropertyType] = useState<PropertyType[]>(Object.values(PropertyType));
 	const [yearCheck, setYearCheck] = useState({ start: 1970, end: thisYear });
 	const [optionCheck, setOptionCheck] = useState('all');
@@ -329,12 +329,12 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 							<span> {searchFilter?.search?.typeList ? searchFilter?.search?.typeList[0] : t('Property type')} </span>
 							<ExpandMoreIcon />
 						</Box>
-						{/* <Box className={`box ${openRooms ? 'on' : ''}`} onClick={roomStateChangeHandler}>
-							<span>
+						<Box className={`box ${openRooms ? 'on' : ''}`} onClick={roomStateChangeHandler}>
+							{/* <span>
 								{searchFilter?.search?.roomsList ? `${searchFilter?.search?.roomsList[0]} rooms}` : t('Rooms')}
-							</span>
+							</span> */}
 							<ExpandMoreIcon />
-						</Box> */}
+						</Box>
 					</Stack>
 					<Stack className={'search-box-other'}>
 						<Box className={'advanced-filter'} onClick={() => advancedFilterHandler(true)}>
@@ -348,7 +348,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 
 					{/*MENU */}
 					<div className={`filter-location ${openLocation ? 'on' : ''}`} ref={locationRef}>
-						{propertyCategory.map((location: string) => {
+						{propertyLocation.map((location: string) => {
 							return (
 								<div onClick={() => propertyLocationSelectHandler(location)} key={location}>
 									<img src={`img/banner/cities/${location}.webp`} alt="" />
@@ -418,26 +418,25 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 								<div className={'row-box'}>
 									<div className={'box'}>
 										<span>bedrooms</span>
-										<div className={'inside'}>
-											{/* <div
+										{/* <div className={'inside'}>
+											<div
 												className={`room ${!searchFilter?.search?.bedsList ? 'active' : ''}`}
 												onClick={() => propertyBedSelectHandler(0)}
 											>
 												Any
-											</div> */}
-											{[1, 2, 3, 4, 5].map(
-												(bed: number) => '',
-												// <div
-												// 	className={`room ${searchFilter?.search?.bedsList?.includes(bed) ? 'active' : ''}`}
-												// 	onClick={() => propertyBedSelectHandler(bed)}
-												// 	key={bed}
-												// >
-												// 	{bed == 0 ? 'Any' : bed}
-												// </div>
-											)}
-										</div>
+											</div>
+											{[1, 2, 3, 4, 5].map((bed: number) => (
+												<div
+													className={`room ${searchFilter?.search?.bedsList?.includes(bed) ? 'active' : ''}`}
+													onClick={() => propertyBedSelectHandler(bed)}
+													key={bed}
+												>
+													{bed == 0 ? 'Any' : bed}
+												</div>
+											))}
+										</div> */}
 									</div>
-									{/* <div className={'box'}>
+									<div className={'box'}>
 										<span>options</span>
 										<div className={'inside'}>
 											<FormControl>
@@ -453,7 +452,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 												</Select>
 											</FormControl>
 										</div>
-									</div> */}
+									</div>
 								</div>
 								<div className={'row-box'} style={{ marginTop: '44px' }}>
 									<div className={'box'}>

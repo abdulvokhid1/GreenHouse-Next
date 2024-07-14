@@ -38,7 +38,7 @@ const Filter = (props: FilterType) => {
 	const { searchFilter, setSearchFilter, initialInput } = props;
 	const device = useDeviceDetect();
 	const router = useRouter();
-	const [propertyCategory, setPropertyCategory] = useState<PropertyCategories[]>(Object.values(PropertyCategories));
+	const [propertyLocation, setPropertyLocation] = useState<PropertyCategories[]>(Object.values(PropertyCategories));
 	const [propertyType, setPropertyType] = useState<PropertyType[]>(Object.values(PropertyType));
 	const [searchText, setSearchText] = useState<string>('');
 	const [showMore, setShowMore] = useState<boolean>(false);
@@ -68,7 +68,6 @@ const Filter = (props: FilterType) => {
 		}
 
 		if (searchFilter?.search?.typeList?.length == 0) {
-			console.log('searchFilter', searchFilter);
 			delete searchFilter.search.typeList;
 			router
 				.push(
@@ -110,26 +109,26 @@ const Filter = (props: FilterType) => {
 		// 		.then();
 		// }
 
-		// if (searchFilter?.search?.options?.length == 0) {
-		// 	delete searchFilter.search.options;
-		// 	router
-		// 		.push(
-		// 			`/property?input=${JSON.stringify({
-		// 				...searchFilter,
-		// 				search: {
-		// 					...searchFilter.search,
-		// 				},
-		// 			})}`,
-		// 			`/property?input=${JSON.stringify({
-		// 				...searchFilter,
-		// 				search: {
-		// 					...searchFilter.search,
-		// 				},
-		// 			})}`,
-		// 			{ scroll: false },
-		// 		)
-		// 		.then();
-		// }
+		if (searchFilter?.search?.options?.length == 0) {
+			delete searchFilter.search.options;
+			router
+				.push(
+					`/property?input=${JSON.stringify({
+						...searchFilter,
+						search: {
+							...searchFilter.search,
+						},
+					})}`,
+					`/property?input=${JSON.stringify({
+						...searchFilter,
+						search: {
+							...searchFilter.search,
+						},
+					})}`,
+					{ scroll: false },
+				)
+				.then();
+		}
 
 		// if (searchFilter?.search?.bedsList?.length == 0) {
 		// 	delete searchFilter.search.bedsList;
@@ -173,6 +172,7 @@ const Filter = (props: FilterType) => {
 						})}`,
 						{ scroll: false },
 					);
+					console.log('categorylist', searchFilter?.search?.categoryList);
 				} else if (searchFilter?.search?.categoryList?.includes(value)) {
 					await router.push(
 						`/property?input=${JSON.stringify({
@@ -572,7 +572,7 @@ const Filter = (props: FilterType) => {
 				</Stack>
 				<Stack className={'find-your-home'} mb={'30px'}>
 					<p className={'title'} style={{ textShadow: '0px 3px 4px #b9b9b9' }}>
-						Location
+						Category
 					</p>
 					<Stack
 						className={`property-location`}
@@ -584,20 +584,20 @@ const Filter = (props: FilterType) => {
 							}
 						}}
 					>
-						{propertyCategory.map((category: string) => {
+						{propertyLocation.map((location: string) => {
 							return (
-								<Stack className={'input-box'} key={category}>
+								<Stack className={'input-box'} key={location}>
 									<Checkbox
-										id={category}
+										id={location}
 										className="property-checkbox"
 										color="default"
 										size="small"
-										value={category}
-										checked={(searchFilter?.search?.categoryList || []).includes(category as PropertyCategories)}
+										value={location}
+										checked={(searchFilter?.search?.categoryList || []).includes(location as PropertyCategories)}
 										onChange={propertyLocationSelectHandler}
 									/>
-									<label htmlFor={category} style={{ cursor: 'pointer' }}>
-										<Typography className="property-type">{category}</Typography>
+									<label htmlFor={location} style={{ cursor: 'pointer' }}>
+										<Typography className="property-type">{location}</Typography>
 									</label>
 								</Stack>
 							);
@@ -625,8 +625,8 @@ const Filter = (props: FilterType) => {
 				</Stack>
 				<Stack className={'find-your-home'} mb={'30px'}>
 					<Typography className={'title'}>Rooms</Typography>
-					<Stack className="button-group">
-						{/* <Button
+					{/* <Stack className="button-group">
+						<Button
 							sx={{
 								borderRadius: '12px 0 0 12px',
 								border: !searchFilter?.search?.roomsList ? '2px solid #181A20' : '1px solid #b9b9b9',
@@ -634,8 +634,8 @@ const Filter = (props: FilterType) => {
 							onClick={() => propertyRoomSelectHandler(0)}
 						>
 							Any
-						</Button> */}
-						{/* <Button
+						</Button>
+						<Button
 							sx={{
 								borderRadius: 0,
 								border: searchFilter?.search?.roomsList?.includes(1) ? '2px solid #181A20' : '1px solid #b9b9b9',
@@ -644,8 +644,8 @@ const Filter = (props: FilterType) => {
 							onClick={() => propertyRoomSelectHandler(1)}
 						>
 							1
-						</Button> */}
-						{/* <Button
+						</Button>
+						<Button
 							sx={{
 								borderRadius: 0,
 								border: searchFilter?.search?.roomsList?.includes(2) ? '2px solid #181A20' : '1px solid #b9b9b9',
@@ -654,8 +654,8 @@ const Filter = (props: FilterType) => {
 							onClick={() => propertyRoomSelectHandler(2)}
 						>
 							2
-						</Button> */}
-						{/* <Button
+						</Button>
+						<Button
 							sx={{
 								borderRadius: 0,
 								border: searchFilter?.search?.roomsList?.includes(3) ? '2px solid #181A20' : '1px solid #b9b9b9',
@@ -664,8 +664,8 @@ const Filter = (props: FilterType) => {
 							onClick={() => propertyRoomSelectHandler(3)}
 						>
 							3
-						</Button> */}
-						{/* <Button
+						</Button>
+						<Button
 							sx={{
 								borderRadius: 0,
 								border: searchFilter?.search?.roomsList?.includes(4) ? '2px solid #181A20' : '1px solid #b9b9b9',
@@ -675,8 +675,8 @@ const Filter = (props: FilterType) => {
 							onClick={() => propertyRoomSelectHandler(4)}
 						>
 							4
-						</Button> */}
-						{/* <Button
+						</Button>
+						<Button
 							sx={{
 								borderRadius: '0 12px 12px 0',
 								border: searchFilter?.search?.roomsList?.includes(5) ? '2px solid #181A20' : '1px solid #b9b9b9',
@@ -684,13 +684,13 @@ const Filter = (props: FilterType) => {
 							onClick={() => propertyRoomSelectHandler(5)}
 						>
 							5+
-						</Button> */}
-					</Stack>
+						</Button>
+					</Stack> */}
 				</Stack>
 				<Stack className={'find-your-home'} mb={'30px'}>
-					{/* <Typography className={'title'}>Bedrooms</Typography> */}
-					<Stack className="button-group">
-						{/* <Button
+					<Typography className={'title'}>Bedrooms</Typography>
+					{/* <Stack className="button-group">
+						<Button
 							sx={{
 								borderRadius: '12px 0 0 12px',
 								border: !searchFilter?.search?.bedsList ? '2px solid #181A20' : '1px solid #b9b9b9',
@@ -698,8 +698,8 @@ const Filter = (props: FilterType) => {
 							onClick={() => propertyBedSelectHandler(0)}
 						>
 							Any
-						</Button> */}
-						{/* <Button
+						</Button>
+						<Button
 							sx={{
 								borderRadius: 0,
 								border: searchFilter?.search?.bedsList?.includes(1) ? '2px solid #181A20' : '1px solid #b9b9b9',
@@ -708,8 +708,8 @@ const Filter = (props: FilterType) => {
 							onClick={() => propertyBedSelectHandler(1)}
 						>
 							1
-						</Button> */}
-						{/* <Button
+						</Button>
+						<Button
 							sx={{
 								borderRadius: 0,
 								border: searchFilter?.search?.bedsList?.includes(2) ? '2px solid #181A20' : '1px solid #b9b9b9',
@@ -718,8 +718,8 @@ const Filter = (props: FilterType) => {
 							onClick={() => propertyBedSelectHandler(2)}
 						>
 							2
-						</Button> */}
-						{/* <Button
+						</Button>
+						<Button
 							sx={{
 								borderRadius: 0,
 								border: searchFilter?.search?.bedsList?.includes(3) ? '2px solid #181A20' : '1px solid #b9b9b9',
@@ -728,8 +728,8 @@ const Filter = (props: FilterType) => {
 							onClick={() => propertyBedSelectHandler(3)}
 						>
 							3
-						</Button> */}
-						{/* <Button
+						</Button>
+						<Button
 							sx={{
 								borderRadius: 0,
 								border: searchFilter?.search?.bedsList?.includes(4) ? '2px solid #181A20' : '1px solid #b9b9b9',
@@ -739,8 +739,8 @@ const Filter = (props: FilterType) => {
 							onClick={() => propertyBedSelectHandler(4)}
 						>
 							4
-						</Button> */}
-						{/* <Button
+						</Button>
+						<Button
 							sx={{
 								borderRadius: '0 12px 12px 0',
 								border: searchFilter?.search?.bedsList?.includes(5) ? '2px solid #181A20' : '1px solid #b9b9b9',
@@ -749,12 +749,12 @@ const Filter = (props: FilterType) => {
 							onClick={() => propertyBedSelectHandler(5)}
 						>
 							5+
-						</Button> */}
-					</Stack>
+						</Button>
+					</Stack> */}
 				</Stack>
 				<Stack className={'find-your-home'} mb={'30px'}>
 					<Typography className={'title'}>Options</Typography>
-					{/* <Stack className={'input-box'}>
+					<Stack className={'input-box'}>
 						<Checkbox
 							id={'Barter'}
 							className="property-checkbox"
@@ -767,9 +767,9 @@ const Filter = (props: FilterType) => {
 						<label htmlFor={'Barter'} style={{ cursor: 'pointer' }}>
 							<Typography className="propert-type">Barter</Typography>
 						</label>
-					</Stack> */}
+					</Stack>
 					<Stack className={'input-box'}>
-						{/* <Checkbox
+						<Checkbox
 							id={'Rent'}
 							className="property-checkbox"
 							color="default"
@@ -780,7 +780,7 @@ const Filter = (props: FilterType) => {
 						/>
 						<label htmlFor={'Rent'} style={{ cursor: 'pointer' }}>
 							<Typography className="propert-type">Rent</Typography>
-						</label> */}
+						</label>
 					</Stack>
 				</Stack>
 				<Stack className={'find-your-home'} mb={'30px'}>
@@ -796,13 +796,13 @@ const Filter = (props: FilterType) => {
 								onChange={(e: any) => propertySquareHandler(e, 'start')}
 								MenuProps={MenuProps}
 							>
-								{propertySquare.map((discount: number) => (
+								{propertySquare.map((square: number) => (
 									<MenuItem
-										value={discount}
-										disabled={(searchFilter?.search?.discountRange?.end || 0) < discount}
-										key={discount}
+										value={square}
+										disabled={(searchFilter?.search?.discountRange?.end || 0) < square}
+										key={square}
 									>
-										{discount}
+										{square}
 									</MenuItem>
 								))}
 							</Select>
@@ -818,13 +818,13 @@ const Filter = (props: FilterType) => {
 								onChange={(e: any) => propertySquareHandler(e, 'end')}
 								MenuProps={MenuProps}
 							>
-								{propertySquare.map((discount: number) => (
+								{propertySquare.map((square: number) => (
 									<MenuItem
-										value={discount}
-										disabled={(searchFilter?.search?.discountRange?.start || 0) > discount}
-										key={discount}
+										value={square}
+										disabled={(searchFilter?.search?.discountRange?.start || 0) > square}
+										key={square}
 									>
-										{discount}
+										{square}
 									</MenuItem>
 								))}
 							</Select>

@@ -78,7 +78,7 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 		},
 	});
 
-	console.log('Propertiesdetail', propertyId);
+	console.log('property', property);
 
 	const {
 		loading: getPropertiesLoading,
