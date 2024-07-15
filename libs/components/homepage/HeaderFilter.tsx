@@ -54,7 +54,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 	const [propertyLocation, setPropertyLocation] = useState<PropertyCategories[]>(Object.values(PropertyCategories));
 	const [propertyType, setPropertyType] = useState<PropertyType[]>(Object.values(PropertyType));
 	const [yearCheck, setYearCheck] = useState({ start: 1970, end: thisYear });
-	const [optionCheck, setOptionCheck] = useState('all');
+	// const [optionCheck, setOptionCheck] = useState('all');
 
 	/** LIFECYCLES **/
 	useEffect(() => {
@@ -196,35 +196,35 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 	// 	[searchFilter],
 	// );
 
-	const propertyOptionSelectHandler = useCallback(
-		async (e: any) => {
-			try {
-				const value = e.target.value;
-				setOptionCheck(value);
+	// const propertyOptionSelectHandler = useCallback(
+	// 	async (e: any) => {
+	// 		try {
+	// 			const value = e.target.value;
+	// 			setOptionCheck(value);
 
-				if (value !== 'all') {
-					setSearchFilter({
-						...searchFilter,
-						search: {
-							...searchFilter.search,
-							options: [value],
-						},
-					});
-				} else {
-					delete searchFilter.search.options;
-					setSearchFilter({
-						...searchFilter,
-						search: {
-							...searchFilter.search,
-						},
-					});
-				}
-			} catch (err: any) {
-				console.log('ERROR, propertyOptionSelectHandler:', err);
-			}
-		},
-		[searchFilter],
-	);
+	// 			if (value !== 'all') {
+	// 				setSearchFilter({
+	// 					...searchFilter,
+	// 					search: {
+	// 						...searchFilter.search,
+	// 						options: [value],
+	// 					},
+	// 				});
+	// 			} else {
+	// 				delete searchFilter.search.options;
+	// 				setSearchFilter({
+	// 					...searchFilter,
+	// 					search: {
+	// 						...searchFilter.search,
+	// 					},
+	// 				});
+	// 			}
+	// 		} catch (err: any) {
+	// 			console.log('ERROR, propertyOptionSelectHandler:', err);
+	// 		}
+	// 	},
+	// 	[searchFilter],
+	// );
 
 	const propertySquareHandler = useCallback(
 		async (e: any, type: string) => {
@@ -279,7 +279,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 
 	const resetFilterHandler = () => {
 		setSearchFilter(initialInput);
-		setOptionCheck('all');
+		// setOptionCheck('all');1
 		setYearCheck({ start: 1970, end: thisYear });
 	};
 
@@ -297,9 +297,9 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 			// 	delete searchFilter.search.roomsList;
 			// }
 
-			if (searchFilter?.search?.options?.length == 0) {
-				delete searchFilter.search.options;
-			}
+			// if (searchFilter?.search?.options?.length == 0) {
+			// 	delete searchFilter.search.options;
+			// }
 
 			// if (searchFilter?.search?.bedsList?.length == 0) {
 			// 	delete searchFilter.search.bedsList;
@@ -307,7 +307,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 
 			await router.push(
 				`/property?input=${JSON.stringify(searchFilter)}`,
-				`/property?input=${JSON.stringify(searchFilter)}`,
+				// `/property?input=${JSON.stringify(searchFilter)}`,
 			);
 		} catch (err: any) {
 			console.log('ERROR, pushSearchHandler:', err);
@@ -329,12 +329,12 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 							<span> {searchFilter?.search?.typeList ? searchFilter?.search?.typeList[0] : t('Property type')} </span>
 							<ExpandMoreIcon />
 						</Box>
-						<Box className={`box ${openRooms ? 'on' : ''}`} onClick={roomStateChangeHandler}>
-							{/* <span>
+						{/* `<Box className={`box ${openRooms ? 'on' : ''}`} onClick={roomStateChangeHandler}>
+							<span>
 								{searchFilter?.search?.roomsList ? `${searchFilter?.search?.roomsList[0]} rooms}` : t('Rooms')}
-							</span> */}
+							</span>
 							<ExpandMoreIcon />
-						</Box>
+						</Box>` */}
 					</Stack>
 					<Stack className={'search-box-other'}>
 						<Box className={'advanced-filter'} onClick={() => advancedFilterHandler(true)}>
@@ -436,13 +436,13 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 											))}
 										</div> */}
 									</div>
-									<div className={'box'}>
+									{/* <div className={'box'}>
 										<span>options</span>
 										<div className={'inside'}>
 											<FormControl>
 												<Select
-													value={optionCheck}
-													onChange={propertyOptionSelectHandler}
+													// value={optionCheck}
+													// onChange={propertyOptionSelectHandler}
 													displayEmpty
 													inputProps={{ 'aria-label': 'Without label' }}
 												>
@@ -452,7 +452,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 												</Select>
 											</FormControl>
 										</div>
-									</div>
+									</div> */}
 								</div>
 								<div className={'row-box'} style={{ marginTop: '44px' }}>
 									<div className={'box'}>
@@ -567,14 +567,14 @@ HeaderFilter.defaultProps = {
 		page: 1,
 		limit: 9,
 		search: {
-			squaresRange: {
-				start: 0,
-				end: 500,
-			},
-			pricesRange: {
-				start: 0,
-				end: 2000000,
-			},
+			// squaresRange: {
+			// 	start: 0,
+			// 	end: 500,
+			// },
+			// pricesRange: {
+			// 	start: 0,
+			// 	end: 2000000,
+			// },
 		},
 	},
 };

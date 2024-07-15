@@ -17,11 +17,11 @@ export const light = {
 			main: '#E92C28',
 		},
 		secondary: {
-			main: '#1646C1',
+			main: '#45a358',
 		},
 		text: {
 			primary: '#212121',
-			secondary: '#616161',
+			secondary: '#45a358',
 			dark: common.black,
 		},
 	},

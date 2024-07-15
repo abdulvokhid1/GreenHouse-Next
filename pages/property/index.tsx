@@ -53,7 +53,7 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 			setTotal(data?.getProperties?.metaCounter[0]?.total);
 		},
 	});
-	console.log('data', properties);
+	console.log('properties', properties);
 
 	/** LIFECYCLES **/
 	useEffect(() => {

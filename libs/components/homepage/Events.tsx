@@ -4,36 +4,34 @@ import useDeviceDetect from '../../hooks/useDeviceDetect';
 
 interface EventData {
 	eventTitle: string;
-	city: string;
+	category: string;
 	description: string;
 	imageSrc: string;
 }
 const eventsData: EventData[] = [
 	{
-		eventTitle: 'Paradise City Theme Park',
-		city: 'Incheon',
-		description:
-			'Experience magic and wonder in Incheon with a visit to the night-themed indoor theme park Wonderbox at Paradise City!',
-		imageSrc: '/img/events/INCHEON.webp',
+		eventTitle: 'Cactus & Succulent Care Tips',
+		category: 'SMALLPLANTS',
+		description: 'Cacti are succulents are easy care plants for any home or patio.',
+		imageSrc: '/img/events/SMALLPLANTS.png',
 	},
 	{
-		eventTitle: 'Taebaeksan Snow Festival',
-		city: 'Seoul',
-		description: 'If you have the opportunity to travel to South Korea, do not miss the Taebaeksan Snow Festival!',
-		imageSrc: '/img/events/SEOUL.webp',
+		eventTitle: 'Top 10 Succulents for Your Home',
+		category: 'SEEDS',
+		description: 'Best in hanging baskets. Prefers medium to high light.',
+		imageSrc: '/img/events/SEEDS.png',
 	},
 	{
-		eventTitle: 'Suseong Lake Event',
-		city: 'Daegu',
-		description: 'The Suseong Lake Festival is a culture and arts festival held alongside Suseongmot Lake!',
-		imageSrc: '/img/events/DAEGU.webp',
+		eventTitle: 'Cacti & Succulent Care Tips',
+		category: 'SUCCULENTS',
+		description: 'Cacti and succulents thrive in containers and because most are..',
+		imageSrc: '/img/events/SUCCULENTS.png',
 	},
 	{
-		eventTitle: 'Sand Festival',
-		city: 'Busan',
-		description:
-			'Haeundae Sand Festival, the nation’s largest eco-friendly exhibition on sand, is held at Haeundae Beach!',
-		imageSrc: '/img/events/BUSAN.webp',
+		eventTitle: 'Best Houseplants Room by Room',
+		category: 'HOUSEPLANTS',
+		description: 'The benefits of houseplants are endless. In addition to..',
+		imageSrc: '/img/events/HOUSEPLANTS.png',
 	},
 ];
 
@@ -46,15 +44,18 @@ const EventCard = ({ event }: { event: EventData }) => {
 		return (
 			<Stack
 				className="event-card"
-				style={{
-					backgroundImage: `url(${event?.imageSrc})`,
-					backgroundSize: 'cover',
-					backgroundPosition: 'center',
-					backgroundRepeat: 'no-repeat',
-				}}
+				// style={{
+				// 	backgroundImage: `url(${event?.imageSrc})`,
+				// 	// backgroundSize: 'cover',
+				// 	// backgroundPosition: 'center',
+				// 	backgroundRepeat: 'no-repeat',
+				// }}
 			>
+				<div>
+					<img style={{ width: '300px', borderRadius: '5px' }} src={event?.imageSrc} alt="" />
+				</div>
 				<Box component={'div'} className={'info'}>
-					<strong>{event?.city}</strong>
+					<strong>{event?.category}</strong>
 					<span>{event?.eventTitle}</span>
 				</Box>
 				<Box component={'div'} className={'more'}>
@@ -76,8 +77,8 @@ const Events = () => {
 				<Stack className={'container'}>
 					<Stack className={'info-box'}>
 						<Box component={'div'} className={'left'}>
-							<span className={'white'}>Events</span>
-							<p className={'white'}>Events waiting your attention!</p>
+							<span>Our Blog</span>
+							<p>We are an online plant shop offering a wide range of cheap and trendy plants.</p>
 						</Box>
 					</Stack>
 					<Stack className={'card-wrapper'}>

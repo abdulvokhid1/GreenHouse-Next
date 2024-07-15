@@ -20,6 +20,9 @@ import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 import { propertySquare } from '../../config';
 import RefreshIcon from '@mui/icons-material/Refresh';
 
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
+
 const MenuProps = {
 	PaperProps: {
 		style: {
@@ -597,7 +600,17 @@ const Filter = (props: FilterType) => {
 										onChange={propertyLocationSelectHandler}
 									/>
 									<label htmlFor={location} style={{ cursor: 'pointer' }}>
-										<Typography className="property-type">{location}</Typography>
+										<div
+											style={{
+												display: 'flex',
+												justifyContent: 'space-between',
+												// border: '1px solid red',
+												width: '260px',
+											}}
+										>
+											<Typography className="property-type">{location}</Typography>
+											<div>({location.length})</div>
+										</div>
 									</label>
 								</Stack>
 							);
@@ -605,7 +618,7 @@ const Filter = (props: FilterType) => {
 					</Stack>
 				</Stack>
 				<Stack className={'find-your-home'} mb={'30px'}>
-					<Typography className={'title'}>Property Type</Typography>
+					<Typography className={'title'}>Property Size</Typography>
 					{propertyType.map((type: string) => (
 						<Stack className={'input-box'} key={type}>
 							<Checkbox
@@ -624,7 +637,7 @@ const Filter = (props: FilterType) => {
 					))}
 				</Stack>
 				<Stack className={'find-your-home'} mb={'30px'}>
-					<Typography className={'title'}>Rooms</Typography>
+					{/* <Typography className={'title'}>Rooms</Typography> */}
 					{/* <Stack className="button-group">
 						<Button
 							sx={{
@@ -688,7 +701,7 @@ const Filter = (props: FilterType) => {
 					</Stack> */}
 				</Stack>
 				<Stack className={'find-your-home'} mb={'30px'}>
-					<Typography className={'title'}>Bedrooms</Typography>
+					{/* <Typography className={'title'}>Bedrooms</Typography> */}
 					{/* <Stack className="button-group">
 						<Button
 							sx={{
@@ -752,7 +765,7 @@ const Filter = (props: FilterType) => {
 						</Button>
 					</Stack> */}
 				</Stack>
-				<Stack className={'find-your-home'} mb={'30px'}>
+				{/* <Stack className={'find-your-home'} mb={'30px'}>
 					<Typography className={'title'}>Options</Typography>
 					<Stack className={'input-box'}>
 						<Checkbox
@@ -782,8 +795,8 @@ const Filter = (props: FilterType) => {
 							<Typography className="propert-type">Rent</Typography>
 						</label>
 					</Stack>
-				</Stack>
-				<Stack className={'find-your-home'} mb={'30px'}>
+				</Stack> */}
+				{/* <Stack className={'find-your-home'} mb={'30px'}>
 					<Typography className={'title'}>Square meter</Typography>
 					<Stack className="square-year-input">
 						<FormControl>
@@ -830,10 +843,10 @@ const Filter = (props: FilterType) => {
 							</Select>
 						</FormControl>
 					</Stack>
-				</Stack>
+				</Stack> */}
 				<Stack className={'find-your-home'}>
 					<Typography className={'title'}>Price Range</Typography>
-					<Stack className="square-year-input">
+					{/* <Stack className="square-year-input">
 						<input
 							type="number"
 							placeholder="$ min"
@@ -856,7 +869,24 @@ const Filter = (props: FilterType) => {
 								}
 							}}
 						/>
-					</Stack>
+					</Stack> */}
+					<Box sx={{ width: 300 }}>
+						{/* <Slider size="small" defaultValue={70} aria-label="Small" v`alueLabelDisplay="auto" /> */}
+						<Slider
+							defaultValue={50}
+							aria-label="Default"
+							valueLabelDisplay="auto"
+							color="secondary"
+							// min={0}
+							// value={searchFilter?.search?.pricesRange?.start ?? 0}
+							// onChange={(e: any) => {
+							// 	if (e.target.value >= 0) {
+							// 		propertyPriceHandler(e.target.value, 'start');
+							// 	}
+							// }}
+						/>
+						{/* {<p>{e.target.value}</p>} */}
+					</Box>
 				</Stack>
 			</Stack>
 		);

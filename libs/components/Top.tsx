@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 import { alpha, styled } from '@mui/material/styles';
 import Menu, { MenuProps } from '@mui/material/Menu';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import { CaretDown, TextAlignCenter, TextAlignJustify } from 'phosphor-react';
+import { CaretDown, Cursor, TextAlignCenter, TextAlignJustify } from 'phosphor-react';
 import useDeviceDetect from '../hooks/useDeviceDetect';
 import Link from 'next/link';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
@@ -21,6 +21,7 @@ import { REACT_APP_API_URL } from '../config';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { sweetMixinErrorAlert } from '../sweetAlert';
+import { pink } from '@mui/material/colors';
 
 const style = {
 	position: 'absolute' as 'absolute',
@@ -292,7 +293,18 @@ const Top = () => {
 								// 	</div>
 								// </Link>
 								<div>
-									<Button onClick={handleLOpen}>Login / Register</Button>
+									<Button
+										style={{
+											width: '130px',
+											height: '35px',
+											background: '#45a358',
+											color: 'white',
+											borderRadius: '10px',
+										}}
+										onClick={handleLOpen}
+									>
+										Login / Register
+									</Button>
 									<Modal
 										open={openLog}
 										onClose={handleLClose}
@@ -324,7 +336,7 @@ const Top = () => {
 												>
 													<img src="/img/logo/Logo.png" alt="" style={{ width: '200px' }} />
 												</div>
-												<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+												<div style={{ display: 'flex' }}>
 													<span
 														style={{
 															alignItems: 'center',
@@ -336,7 +348,7 @@ const Top = () => {
 															lineHeight: '46px',
 														}}
 													>
-														{loginView ? 'Login' : 'Signup'}
+														{loginView ? <b>Login</b> : <b>Signup</b>}
 													</span>
 												</div>
 												<div
@@ -351,7 +363,12 @@ const Top = () => {
 												>
 													<div>
 														<input
-															style={{ width: '300px', height: '40px' }}
+															style={{
+																width: '300px',
+																height: '40px',
+																border: '1px solid #45a358',
+																borderRadius: '7px',
+															}}
 															type="text"
 															placeholder={'Enter Nickname'}
 															onChange={(e) => handleInput('nick', e.target.value)}
@@ -364,7 +381,12 @@ const Top = () => {
 													</div>
 													<div>
 														<input
-															style={{ width: '300px', height: '40px' }}
+															style={{
+																width: '300px',
+																height: '40px',
+																border: '1px solid #45a358',
+																borderRadius: '7px',
+															}}
 															type="text"
 															placeholder={'Enter Password'}
 															onChange={(e) => handleInput('password', e.target.value)}
@@ -378,7 +400,12 @@ const Top = () => {
 													{!loginView && (
 														<div>
 															<input
-																style={{ width: '300px', height: '40px' }}
+																style={{
+																	width: '300px',
+																	height: '40px',
+																	borderRadius: '7px',
+																	border: '1px solid #45a358',
+																}}
 																type="text"
 																placeholder={'Enter Phone'}
 																onChange={(e) => handleInput('phone', e.target.value)}
@@ -390,19 +417,27 @@ const Top = () => {
 														</div>
 													)}
 												</div>
-												<Box className={'register'}>
+												<Box style={{ marginTop: '30px' }}>
 													{!loginView && (
 														<div className={'type-option'}>
-															<span style={{ color: '##3D3D3D' }}>I want to be registered as:</span>
+															<span style={{ color: '#45a358' }}>I want to be registered as:</span>
 															<div>
 																<FormGroup>
 																	<FormControlLabel
+																		sx={{ color: '#45a358' }}
 																		control={
 																			<Checkbox
+																				sx={{
+																					color: '#45a358',
+																					'&.Mui-checked': {
+																						color: '#45a358',
+																					},
+																				}}
 																				size="small"
 																				name={'USER'}
 																				onChange={checkUserTypeHandler}
 																				checked={input?.type == 'USER'}
+																				color="secondary"
 																			/>
 																		}
 																		label="User"
@@ -410,8 +445,15 @@ const Top = () => {
 																</FormGroup>
 																<FormGroup>
 																	<FormControlLabel
+																		sx={{ color: '#45a358' }}
 																		control={
 																			<Checkbox
+																				sx={{
+																					color: '#45a358',
+																					'&.Mui-checked': {
+																						color: '#45a358',
+																					},
+																				}}
 																				size="small"
 																				name={'AGENT'}
 																				onChange={checkUserTypeHandler}
@@ -426,14 +468,34 @@ const Top = () => {
 													)}
 
 													{loginView && (
-														<div className={'remember-info'}>
+														<div
+															style={{
+																display: 'flex',
+																flexDirection: 'row',
+																justifyContent: 'space-between',
+																alignItems: 'center',
+																marginTop: '50px',
+															}}
+														>
 															<FormGroup>
 																<FormControlLabel
-																	control={<Checkbox defaultChecked size="small" />}
+																	sx={{ color: '#45a358' }}
+																	control={
+																		<Checkbox
+																			sx={{
+																				color: '#45a358',
+																				'&.Mui-checked': {
+																					color: '#45a358',
+																				},
+																			}}
+																			defaultChecked
+																			size="small"
+																		/>
+																	}
 																	label="Remember me"
 																/>
 															</FormGroup>
-															<a style={{ marginLeft: '280px', color: '#45a358' }}>Forgot password?</a>
+															<a style={{ color: '#45a358', cursor: 'pointer' }}>Forgot password?</a>
 														</div>
 													)}
 
@@ -474,11 +536,13 @@ const Top = () => {
 														</Button>
 													)}
 												</Box>
-												<Box>
-													{loginView ? (
-														<p style={{ marginTop: '40px' }}>
+												{/* <Box style={{ marginTop: '110px' }}> */}
+												{loginView ? (
+													<div style={{ marginTop: '130px', color: '#45a358' }}>
+														<p>
 															Not registered yet?
 															<b
+																style={{ marginLeft: '10px' }}
 																onClick={() => {
 																	viewChangeHandler(false);
 																}}
@@ -486,13 +550,19 @@ const Top = () => {
 																SIGNUP
 															</b>
 														</p>
-													) : (
+													</div>
+												) : (
+													<div style={{ marginTop: '25px', color: '#45a358' }}>
 														<p style={{ marginTop: '40px' }}>
 															Have account?
-															<b onClick={() => viewChangeHandler(true)}> LOGIN</b>
+															<b style={{ marginLeft: '10px' }} onClick={() => viewChangeHandler(true)}>
+																{' '}
+																LOGIN
+															</b>
 														</p>
-													)}
-												</Box>
+													</div>
+												)}
+												{/* </Box> */}
 											</Stack>
 											<Stack className={'right'}></Stack>
 										</Box>
