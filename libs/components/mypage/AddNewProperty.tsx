@@ -190,7 +190,18 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 					<Stack className="config">
 						<Stack className="description-box">
 							<Stack className="config-column">
-								<Typography className="title">Title</Typography>
+								<div
+									style={{
+										display: 'flex',
+										flexDirection: 'row',
+										alignItems: 'center',
+										textAlign: 'center',
+										gap: '5px',
+									}}
+								>
+									<Typography className="title">Title</Typography>
+									<img style={{ width: '10px', height: '15px' }} src="img/icons/star.svg" alt="" />
+								</div>
 								<input
 									type="text"
 									className="description-input"
@@ -204,7 +215,18 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 
 							<Stack className="config-row">
 								<Stack className="price-year-after-price">
-									<Typography className="title">Price</Typography>
+									<div
+										style={{
+											display: 'flex',
+											flexDirection: 'row',
+											alignItems: 'center',
+											textAlign: 'center',
+											gap: '5px',
+										}}
+									>
+										<Typography className="title">Price</Typography>
+										<img style={{ width: '10px', height: '15px' }} src="img/icons/star.svg" alt="" />
+									</div>
 									<input
 										type="text"
 										className="description-input"
@@ -216,7 +238,18 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 									/>
 								</Stack>
 								<Stack className="price-year-after-price">
-									<Typography className="title">Select Type</Typography>
+									<div
+										style={{
+											display: 'flex',
+											flexDirection: 'row',
+											alignItems: 'center',
+											textAlign: 'center',
+											gap: '5px',
+										}}
+									>
+										<Typography className="title">Select Type</Typography>
+										<img style={{ width: '10px', height: '15px' }} src="img/icons/star.svg" alt="" />
+									</div>
 									<select
 										className={'select-description'}
 										defaultValue={insertPropertyData.propertyType || 'select'}
@@ -244,7 +277,18 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 
 							<Stack className="config-row">
 								<Stack className="price-year-after-price">
-									<Typography className="title">Select Category</Typography>
+									<div
+										style={{
+											display: 'flex',
+											flexDirection: 'row',
+											alignItems: 'center',
+											textAlign: 'center',
+											gap: '5px',
+										}}
+									>
+										<Typography className="title">Select Category</Typography>
+										<img style={{ width: '10px', height: '15px' }} src="img/icons/star.svg" alt="" />
+									</div>
 									<select
 										className={'select-description'}
 										defaultValue={insertPropertyData.propertyCategories || 'select'}
@@ -283,7 +327,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 							</Stack>
 
 							<Stack className="config-row">
-								<Stack className="price-year-after-price">
+								{/* <Stack className="price-year-after-price">
 									<Typography className="title">Barter</Typography>
 									<select
 										className={'select-description'}
@@ -301,8 +345,8 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 									</select>
 									<div className={'divider'}></div>
 									<img src={'/img/icons/Vector.svg'} className={'arrow-down'} />
-								</Stack>
-								<Stack className="price-year-after-price">
+								</Stack> */}
+								{/* <Stack className="price-year-after-price">
 									<Typography className="title">Rent</Typography>
 									<select
 										className={'select-description'}
@@ -320,11 +364,11 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 									</select>
 									<div className={'divider'}></div>
 									<img src={'/img/icons/Vector.svg'} className={'arrow-down'} />
-								</Stack>
+								</Stack> */}
 							</Stack>
 
 							<Stack className="config-row">
-								<Stack className="price-year-after-price">
+								{/* <Stack className="price-year-after-price">
 									<Typography className="title">Rooms</Typography>
 									<select
 										className={'select-description'}
@@ -343,8 +387,8 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 									</select>
 									<div className={'divider'}></div>
 									<img src={'/img/icons/Vector.svg'} className={'arrow-down'} />
-								</Stack>
-								<Stack className="price-year-after-price">
+								</Stack> */}
+								{/* <Stack className="price-year-after-price">
 									<Typography className="title">Bed</Typography>
 									<select
 										className={'select-description'}
@@ -363,9 +407,9 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 									</select>
 									<div className={'divider'}></div>
 									<img src={'/img/icons/Vector.svg'} className={'arrow-down'} />
-								</Stack>
+								</Stack> */}
 								<Stack className="price-year-after-price">
-									<Typography className="title">Square</Typography>
+									<Typography className="title">Discount Price</Typography>
 									<select
 										className={'select-description'}
 										value={insertPropertyData.propertyDiscountPrice || 'select'}
@@ -403,7 +447,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 							</Stack>
 						</Stack>
 
-						<Typography className="upload-title">Upload photos of your property</Typography>
+						<Typography className="upload-title">Upload photos of your product</Typography>
 						<Stack className="images-box">
 							<Stack className="upload-box">
 								<svg xmlns="http://www.w3.org/2000/svg" width="121" height="120" viewBox="0 0 121 120" fill="none">

@@ -71,6 +71,7 @@
 					.config-column {
 						margin-top: 15px;
 						width: 100%;
+
 						.title {
 							color: #181a20;
 							font-family: $font;
@@ -240,7 +241,7 @@
 						justify-content: center;
 						gap: 30px;
 						border-radius: 12px;
-						border: 1px dashed #eb6753;
+						border: 1px dashed #45a358;
 						.text-box {
 							width: 100%;
 							height: auto;
@@ -265,15 +266,16 @@
 							}
 						}
 						.browse-button {
+							background: #45a358;
 							width: 210px;
 							padding: 16px 30px;
 							justify-content: center;
 							align-items: center;
 							gap: 10px;
 							border-radius: 12px;
-							border: 1px solid #181a20;
+							// border: 1px solid #181a20;
 							.browse-button-text {
-								color: #181a20;
+								color: white;
 								font-family: $font;
 								font-size: 15px;
 								font-style: normal;
@@ -347,7 +349,7 @@
 						align-items: center;
 						gap: 10px;
 						border-radius: 12px;
-						background: #181a20;
+						background: #45a358;
 						.next-button-text {
 							color: #fff;
 							font-family: $font;

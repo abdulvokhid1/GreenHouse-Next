@@ -184,7 +184,7 @@ const TuiEditor = () => {
 				<Button
 					variant="contained"
 					color="primary"
-					style={{ margin: '30px', width: '250px', height: '45px' }}
+					style={{ margin: '30px', width: '250px', height: '45px', color: 'white' }}
 					onClick={handleRegisterButton}
 				>
 					Register

@@ -89,9 +89,10 @@
 								align-items: center;
 								cursor: pointer;
 								border-radius: 12px;
-								border: 1px solid #181a20;
+								border: 'none';
+								background: #45a358;
 								p {
-									color: #181a20;
+									color: white;
 									font-family: $font;
 									font-size: 13px;
 									font-style: normal;
@@ -202,7 +203,8 @@
 						align-self: flex-end;
 						margin-top: 30px;
 						border-radius: 12px;
-						background-color: #000000;
+						background-color: #45a358;
+						border: 'none';
 						p {
 							color: #fff;
 							font-family: $font;

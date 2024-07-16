@@ -111,7 +111,7 @@ const Community: NextPage = ({ initialInput, ...props }: T) => {
 						<Stack className="main-box">
 							<Stack className="left-config">
 								<Stack className={'image-info'}>
-									<img src={'/img/logo/logoText.svg'} />
+									<img src={'/img/logo/Logo.svg'} />
 									<Stack className={'community-name'}>
 										<Typography className={'name'}>Nestar Community</Typography>
 									</Stack>
