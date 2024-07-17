@@ -176,18 +176,19 @@ body::-webkit-scrollbar {
 		position: relative;
 		width: 100%;
 		height: 860px;
+		border: 1px solid red;
 
 		.main-header {
 			background-color: #fafafa;
 			color: black;
-			// border: 1px solid red;
-			margin: 120px;
+			// margin: 120px;
 			height: 450px;
 			width: 1200px;
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
-			margin-left: 130px;
+			border: 1px solid red;
+			margin-left: 126px;
 
 			.mainheader-1 {
 				margin-left: 20px;

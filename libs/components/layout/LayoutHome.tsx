@@ -62,29 +62,8 @@ const withLayoutMain = (Component: any) => {
 						</Stack>
 
 						<Stack className={'header-main'}>
-							{/* <FiberContainer /> */}
-							<Stack className={'main-header'}>
-								<div className="mainheader-1">
-									<p style={{ marginTop: '60px' }}>Welcome to GreenShop</p>
-									<h1 className="bigletter">
-										LET'S MAKE A BETTER <span className="bigletterdifferent">PLANET</span>
-									</h1>
-									<p className="description">
-										We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to
-										create an unique Urban Jungle. Order your favorite plants!
-									</p>
-									<button className="shopbtn">
-										{' '}
-										<a style={{ color: 'white' }} href="/property">
-											SHOP NOW
-										</a>
-									</button>
-								</div>
-								<div className="mainheader-2">
-									<img className="smallflower" src="/img/property/small.png" alt="" />
-									<img className="bigflower" src="/img/property/bigplant.png" alt="" />
-								</div>
-							</Stack>
+							<FiberContainer />
+
 							<Stack className={'container'}>
 								<HeaderFilter />
 							</Stack>

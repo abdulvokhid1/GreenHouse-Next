@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import { Preload, Image as ImageImpl } from '@react-three/drei';
 import { ScrollControls, Scroll } from './ScrollControls';
 import * as THREE from 'three';
+import Stack from '@mui/material/Stack';
 
 function Image(props: any) {
 	const ref = useRef<THREE.Group>();
@@ -47,17 +48,28 @@ function Pages() {
 export default function FiberContainer() {
 	return (
 		<div className="threeJSContainer" style={{ marginTop: '100px', width: '100%', height: '512px' }}>
-			<Canvas gl={{ antialias: false }} dpr={[1, 1.5]}>
-				<Suspense fallback={null}>
-					<ScrollControls infinite horizontal damping={4} pages={4} distance={1}>
-						<Scroll>
-							<Pages />
-						</Scroll>
-					</ScrollControls>
-					<Preload />
-				</Suspense>
-			</Canvas>
+			<Stack className={'main-header'}>
+				<div className="mainheader-1">
+					<p style={{ marginTop: '60px' }}>Welcome to GreenShop</p>
+					<h1 className="bigletter">
+						LET'S MAKE A BETTER <span className="bigletterdifferent">PLANET</span>
+					</h1>
+					<p className="description">
+						We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to create an
+						unique Urban Jungle. Order your favorite plants!
+					</p>
+					<button className="shopbtn">
+						{' '}
+						<a style={{ color: 'white' }} href="/property">
+							SHOP NOW
+						</a>
+					</button>
+				</div>
+				<div className="mainheader-2">
+					<img className="smallflower" src="/img/property/small.png" alt="" />
+					<img className="bigflower" src="/img/property/bigplant.png" alt="" />
+				</div>
+			</Stack>
 		</div>
-
 	);
 }
