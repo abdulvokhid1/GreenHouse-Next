@@ -52,17 +52,9 @@ const TrendPropertyCard = (props: TrendPropertyCardProps) => {
 					</strong>
 					<p className={'desc'}>{property.propertyDesc ?? 'no description'}</p>
 					<div className={'options'}>
-						{/* <div>
-							<img src="/img/icons/bed.svg" alt="" />
-							<span>{property.propertyBeds} bed</span>
-						</div>
-						<div>
-							<img src="/img/icons/room.svg" alt="" />
-							<span>{property.propertyRooms} rooms</span>
-						</div> */}
 						<div>
 							<img src="/img/icons/expand.svg" alt="" />
-							<span>{property.propertyDiscountPrice} m2</span>
+							<span>{property.propertyDiscountPrice} </span>
 						</div>
 					</div>
 					<Divider sx={{ mt: '15px', mb: '17px' }} />
@@ -100,47 +92,35 @@ const TrendPropertyCard = (props: TrendPropertyCardProps) => {
 						pushDetailHandler(property._id);
 					}}
 				>
-					<div>${property.propertyPrice}</div>
+					<IconButton
+						style={{ marginLeft: '250px' }}
+						color={'default'}
+						onClick={() => likePropertyHandler(user, property?._id)}
+					>
+						{property?.meLiked && property?.meLiked[0]?.myFavorite ? (
+							<FavoriteIcon style={{ color: 'red' }} />
+						) : (
+							<FavoriteIcon />
+						)}
+						{/* <Typography className="view-cnt">{property?.propertyLikes}</Typography> */}
+					</IconButton>
 				</Box>
 				<Box component={'div'} className={'info'}>
 					<strong className={'title'} onClick={() => pushDetailHandler(property._id)}>
 						{property.propertyTitle}
 					</strong>
 					<p className={'desc'}>{property.propertyDesc ?? 'no description'}</p>
-					{/* <div className={'options'}>
-						<div>
-							<img src="/img/icons/bed.svg" alt="" />
-							<span>{property.propertyBeds} bed</span>
-						</div>
-						<div>
-							<img src="/img/icons/room.svg" alt="" />
-							<span>{property.propertyRooms} rooms</span>
-						</div>
-						<div>
-							<img src="/img/icons/expand.svg" alt="" />
-							<span>{property.propertySquare} m2</span>
-						</div>
-					</div> */}
+
 					<Divider sx={{ mt: '15px', mb: '17px' }} />
 					<div className={'bott'}>
-						{/* <p>
-							{property.propertyRent ? 'Rent' : ''} {property.propertyRent && property.propertyBarter && '/'}{' '}
-							{property.propertyBarter ? 'Barter' : ''}
-						</p> */}
 						<div className="view-like-box">
 							<IconButton color={'default'}>
 								<RemoveRedEyeIcon />
 							</IconButton>
+
 							<Typography className="view-cnt">{property?.propertyViews}</Typography>
-							<IconButton color={'default'} onClick={() => likePropertyHandler(user, property?._id)}>
-								{property?.meLiked && property?.meLiked[0]?.myFavorite ? (
-									<FavoriteIcon style={{ color: 'red' }} />
-								) : (
-									<FavoriteIcon />
-								)}
-							</IconButton>
-							<Typography className="view-cnt">{property?.propertyLikes}</Typography>
 						</div>
+						<div className="priceclass">${property.propertyPrice}</div>
 					</div>
 				</Box>
 			</Stack>

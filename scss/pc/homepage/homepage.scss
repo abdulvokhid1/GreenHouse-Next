@@ -7,10 +7,12 @@
 			width: 100%;
 			display: flex;
 			flex-direction: row;
-			justify-content: space-between;
+			// justify-content: center;
+			margin-top: -50px;
 			.left {
 				display: flex;
 				flex-direction: column;
+
 				span {
 					color: #181a20;
 					font-family: $font;
@@ -19,13 +21,15 @@
 					font-weight: 500;
 					line-height: 150%;
 					letter-spacing: -0.646px;
+					color: white;
+
 					text-transform: capitalize;
 					&.white {
 						color: #ffffff;
 					}
 				}
 				p {
-					color: #181a20;
+					color: #ffffff;
 					font-family: $font;
 					font-size: 14px;
 					font-style: normal;
@@ -120,11 +124,12 @@
 			height: 697px;
 			display: flex;
 			flex-direction: row;
+			background-color: #45a358;
 			.container {
 				flex-direction: column;
 				.card-box {
 					position: relative;
-					margin-top: 64px;
+					margin-top: 24px;
 					display: flex;
 					flex-direction: row;
 					.empty-list {
@@ -149,7 +154,7 @@
 					.trend-card-box {
 						position: relative;
 						width: 300px;
-						height: 375px;
+						height: 557px;
 						display: flex;
 						flex-direction: column;
 						transition: transform 0.3s;
@@ -160,9 +165,10 @@
 						.card-img {
 							position: relative;
 							width: 100%;
-							height: 203px;
+							height: 236px;
 							background-size: cover;
-							border-radius: 12px 12px 0px 0px;
+							border-radius: 18px 18px 0px 0px;
+
 							cursor: pointer;
 							div {
 								position: absolute;
@@ -180,14 +186,18 @@
 							}
 						}
 						.info {
+							position: relative;
 							padding: 20px 22px 17px;
 							display: flex;
 							flex-direction: column;
 							box-sizing: border-box;
-							border-radius: 0px 0px 12px 12px;
+							// border-radius: 0px 0px 12px 12px;
 							border: 1px solid rgba(196, 196, 196, 0.71);
+							border-radius: 18px 18px 18px 18px;
 							border-top: none;
-							background: #fff;
+							background: #ffffff;
+							height: 269px;
+							bottom: 20px;
 							box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
 							.title {
 								overflow: hidden;
@@ -195,12 +205,13 @@
 								text-overflow: ellipsis;
 								white-space: nowrap;
 								font-family: $font;
-								font-size: 15px;
+								font-size: 20px;
 								font-style: normal;
 								font-weight: 600;
 								line-height: normal;
 								text-transform: capitalize;
 								cursor: pointer;
+								font-family: Verdana, Geneva, Tahoma, sans-serif;
 							}
 							.desc {
 								margin-top: 5px;
@@ -262,6 +273,7 @@
 									flex-direction: row;
 									gap: 7px;
 									align-items: center;
+									justify-content: space-between;
 									.view-cnt {
 										color: #717171;
 										font-family: $font;
@@ -271,6 +283,13 @@
 										line-height: normal;
 										text-overflow: ellipsis;
 									}
+								}
+								.priceclass {
+									font-family: Verdana, Geneva, Tahoma, sans-serif;
+									font-size: 24px;
+									font-weight: 800;
+									line-height: 32px;
+									text-align: left;
 								}
 							}
 						}
@@ -284,7 +303,9 @@
 			height: 816px;
 			display: flex;
 			flex-direction: row;
-			background: #f6f6f6;
+			background: #4e2c2c;
+
+			border: 1px solid red;
 			.container {
 				flex-direction: column;
 				align-items: center;
@@ -309,10 +330,10 @@
 					}
 					.popular-card-box {
 						position: relative;
-						width: 400px;
-						height: 425px;
+						width: 612px;
+						height: 311px;
 						display: flex;
-						flex-direction: column;
+						flex-direction: row;
 						transition: transform 0.3s, opacity 0.3s;
 						&:hover {
 							opacity: 1;
@@ -320,10 +341,10 @@
 						}
 						.card-img {
 							position: relative;
-							width: 100%;
-							height: 203px;
+							width: 330px;
+							height: 311px;
 							background-size: cover;
-							border-radius: 12px 12px 0px 0px;
+							border-radius: 20px 0px 0px 20px;
 							cursor: pointer;
 							div.status {
 								position: absolute;
@@ -365,15 +386,25 @@
 							}
 						}
 						.info {
+							position: relative;
 							padding: 20px 22px 17px;
 							display: flex;
 							flex-direction: column;
 							box-sizing: border-box;
-							border-radius: 0px 0px 12px 12px;
+							border-radius: 20px 20px 20px 20px;
 							border: 1px solid rgba(196, 196, 196, 0.71);
 							border-top: none;
 							background: #fff;
+							width: 389px;
+							right: 18px;
 							box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
+
+							.likewrapper {
+								display: flex;
+								flex-direction: row;
+								align-items: center;
+								justify-content: space-between;
+							}
 							.title {
 								overflow: hidden;
 								color: #181a20;
@@ -447,6 +478,7 @@
 									flex-direction: row;
 									gap: 7px;
 									align-items: center;
+									justify-content: space-between;
 									.view-cnt {
 										color: #717171;
 										font-family: $font;
@@ -458,6 +490,9 @@
 									}
 								}
 							}
+						}
+						.desc2 {
+							margin-top: 30px;
 						}
 					}
 				}

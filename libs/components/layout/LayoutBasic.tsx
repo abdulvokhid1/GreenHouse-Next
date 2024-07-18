@@ -25,68 +25,69 @@ const withLayoutBasic = (Component: any) => {
 		const memoizedValues = useMemo(() => {
 			let title = '',
 				desc = '',
-				bgImage = '';
+				bgColor = '';
 
 			switch (router.pathname) {
 				case '/property':
 					title = 'Property Search';
 					desc = 'We are glad to see you again!';
-					bgImage = '/img/banner/plant9.jpg';
+					bgColor = '#fafafa';
+
 					break;
 				case '/agent':
 					title = 'Agents';
 					desc = 'Home / For Rent';
-					bgImage = '/img/banner/plant9.jpg';
+					bgColor = '#fafafa';
 
 					break;
 				case '/agent/detail':
 					title = 'Agent Page';
 					desc = 'Home / For Rent';
-					bgImage = '/img/banner/plant9.jpg';
+					bgColor = '#fafafa';
 
 					break;
 				case '/mypage':
 					title = 'my page';
 					desc = 'Home / For Rent';
-					bgImage = '/img/banner/plant9.jpg';
+					bgColor = '#fafafa';
 
 					break;
 				case '/community':
 					title = 'Community';
 					desc = 'Home / For Rent';
-					bgImage = '/img/banner/plant9.jpg';
+					bgColor = '#fafafa';
 
 					break;
 				case '/community/detail':
 					title = 'Community Detail';
 					desc = 'Home / For Rent';
-					bgImage = '/img/banner/plant9.jpg';
+					bgColor = '#fafafa';
 
 					break;
 				case '/cs':
 					title = 'CS';
 					desc = 'We are glad to see you again!';
-					bgImage = '/img/banner/plant9.jpg';
+					bgColor = '#fafafa';
 
 					break;
 				case '/account/join':
 					title = 'Login/Signup';
 					desc = 'Authentication Process';
-					bgImage = '/img/banner/plant9.jpg';
+					bgColor = '#fafafa';
 
 					setAuthHeader(true);
 					break;
 				case '/member':
 					title = 'Member Page';
 					desc = 'Home / For Rent';
-					bgImage = '/img/banner/plant9.jpg';
+					bgColor = '#fafafa';
 
 					break;
 				default:
 					break;
 			}
 
-			return { title, desc, bgImage };
+			return { title, desc, bgColor };
 		}, [router.pathname]);
 
 		/** LIFECYCLES **/
@@ -134,14 +135,14 @@ const withLayoutBasic = (Component: any) => {
 						<Stack
 							className={`header-basic ${authHeader && 'auth'}`}
 							style={{
-								backgroundImage: `url(${memoizedValues.bgImage})`,
+								backgroundColor: `${memoizedValues.bgColor}`,
 								backgroundSize: 'cover',
-								boxShadow: 'inset 10px 40px 150px 40px rgb(24 22 36)',
+								// boxShadow: 'inset 10px 40px 150px 40px rgb(24 22 36)',
 							}}
 						>
 							<Stack className={'container'}>
-								<strong>{t(memoizedValues.title)}</strong>
-								<span>{t(memoizedValues.desc)}</span>
+								<strong style={{ color: 'black' }}>{t(memoizedValues.title)}</strong>
+								<span style={{ color: 'black' }}>{t(memoizedValues.desc)}</span>
 							</Stack>
 						</Stack>
 

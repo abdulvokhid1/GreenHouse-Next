@@ -8,13 +8,15 @@ import { REACT_APP_API_URL, topPropertyRank } from '../../config';
 import { useRouter } from 'next/router';
 import { useReactiveVar } from '@apollo/client';
 import { userVar } from '../../../apollo/store';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 interface PopularPropertyCardProps {
 	property: Property;
+	likePropertyHandler: any;
 }
 
 const PopularPropertyCard = (props: PopularPropertyCardProps) => {
-	const { property } = props;
+	const { property, likePropertyHandler } = props;
 	const device = useDeviceDetect();
 	const router = useRouter();
 	const user = useReactiveVar(userVar);
@@ -57,23 +59,9 @@ const PopularPropertyCard = (props: PopularPropertyCardProps) => {
 						{property.propertyTitle}
 					</strong>
 					<p className={'desc'}>{property.propertyAddress}</p>
-					{/* <div className={'options'}>
-						<div>
-							<img src="/img/icons/bed.svg" alt="" />
-							<span>{property?.propertyBeds} bed</span>
-						</div>
-						<div>
-							<img src="/img/icons/room.svg" alt="" />
-							<span>{property?.propertyRooms} rooms</span>
-						</div>
-						<div>
-							<img src="/img/icons/expand.svg" alt="" />
-							<span>{property?.propertySquare} m2</span>
-						</div>
-					</div> */}
+
 					<Divider sx={{ mt: '15px', mb: '17px' }} />
 					<div className={'bott'}>
-						{/* <p>{property?.propertyRent ? 'rent' : 'sale'}</p> */}
 						<div className="view-like-box">
 							<IconButton color={'default'}>
 								<RemoveRedEyeIcon />
@@ -103,42 +91,43 @@ const PopularPropertyCard = (props: PopularPropertyCardProps) => {
 					) : (
 						''
 					)}
-
-					<div className={'price'}>${property.propertyPrice}</div>
 				</Box>
 				<Box component={'div'} className={'info'}>
-					<strong
-						className={'title'}
-						onClick={() => {
-							pushDetailHandler(property._id);
-						}}
-					>
-						{property.propertyTitle}
-					</strong>
-					<p className={'desc'}>{property.propertyAddress}</p>
-					{/* <div className={'options'}>
-						<div>
-							<img src="/img/icons/bed.svg" alt="" />
-							<span>{property?.propertyBeds} bed</span>
+					<div className="likewrapper">
+						<strong
+							className={'title'}
+							onClick={() => {
+								pushDetailHandler(property._id);
+							}}
+						>
+							{property.propertyTitle}
+						</strong>
+
+						<div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+							<IconButton color={'default'} onClick={() => likePropertyHandler(user, property._id)}>
+								{property?.meLiked && property?.meLiked[0]?.myFavorite ? (
+									<FavoriteIcon style={{ color: 'red' }} />
+								) : (
+									<FavoriteIcon />
+								)}
+							</IconButton>
+							<Typography className="view-cnt">{property?.propertyLikes}</Typography>
 						</div>
-						<div>
-							<img src="/img/icons/room.svg" alt="" />
-							<span>{property?.propertyRooms} rooms</span>
-						</div>
-						<div>
-							<img src="/img/icons/expand.svg" alt="" />
-							<span>{property?.propertySquare} m2</span>
-						</div>
-					</div> */}
+					</div>
+					<p className={'desc2'}>{property.propertyAddress}</p>
+
 					<Divider sx={{ mt: '15px', mb: '17px' }} />
 					<div className={'bott'}>
-						{/* <p>{property?.propertyRent ? 'rent' : 'sale'}</p> */}
 						<div className="view-like-box">
 							<IconButton color={'default'}>
 								<RemoveRedEyeIcon />
 							</IconButton>
 							<Typography className="view-cnt">{property?.propertyViews}</Typography>
 						</div>
+						<div className={'price'}>${property.propertyPrice}</div>
+					</div>
+					<div className="desc2">
+						<p>Product Description: {property.propertyDesc}</p>
 					</div>
 				</Box>
 			</Stack>
