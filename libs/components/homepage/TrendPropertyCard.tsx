@@ -102,7 +102,7 @@ const TrendPropertyCard = (props: TrendPropertyCardProps) => {
 						) : (
 							<FavoriteIcon />
 						)}
-						{/* <Typography className="view-cnt">{property?.propertyLikes}</Typography> */}
+						<Typography className="view-cnt">{property?.propertyLikes}</Typography>
 					</IconButton>
 				</Box>
 				<Box component={'div'} className={'info'}>

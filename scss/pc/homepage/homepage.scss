@@ -7,7 +7,7 @@
 			width: 100%;
 			display: flex;
 			flex-direction: row;
-			// justify-content: center;
+			justify-content: space-between;
 			margin-top: -50px;
 			.left {
 				display: flex;
@@ -21,7 +21,7 @@
 					font-weight: 500;
 					line-height: 150%;
 					letter-spacing: -0.646px;
-					color: white;
+					color: black;
 
 					text-transform: capitalize;
 					&.white {
@@ -29,7 +29,7 @@
 					}
 				}
 				p {
-					color: #ffffff;
+					color: #000000;
 					font-family: $font;
 					font-size: 14px;
 					font-style: normal;
@@ -303,9 +303,7 @@
 			height: 816px;
 			display: flex;
 			flex-direction: row;
-			background: #4e2c2c;
 
-			border: 1px solid red;
 			.container {
 				flex-direction: column;
 				align-items: center;
@@ -345,6 +343,9 @@
 							height: 311px;
 							background-size: cover;
 							border-radius: 20px 0px 0px 20px;
+							box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
+							border: 1px solid rgba(196, 196, 196, 0.71);
+
 							cursor: pointer;
 							div.status {
 								position: absolute;
@@ -515,12 +516,94 @@
 				}
 			}
 		}
-		.video-frame {
+		.ads-frame {
 			width: 100%;
-			height: 678px;
-			background: black;
+			height: 710px;
+			background: white;
 			transform: perspective(0px);
 			box-shadow: -3px 0px 20px 14px #34343480;
+
+			.ads-wrapper {
+				background-color: #efefeb;
+				height: 600px;
+				width: 1300px;
+				margin: 90px;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+
+				.first-part {
+					display: flex;
+					flex-direction: column;
+					margin-left: 90px;
+					margin-top: 150px;
+					width: 600px;
+
+					p {
+						font-family: Manrope;
+						font-size: 36px;
+						font-weight: 800;
+						line-height: 48px;
+						text-align: left;
+					}
+					b {
+						font-family: Manrope;
+						font-size: 20px;
+						font-weight: 500;
+						line-height: 32px;
+						text-align: left;
+					}
+				}
+				.second-part {
+					display: flex;
+					flex-direction: row;
+					justify-content: space-evenly;
+					width: 700px;
+
+					.first-wrp {
+						.first-flower {
+							width: 170px;
+							height: 307px;
+							margin-top: 110px;
+							border-radius: 40px;
+						}
+					}
+					.second-flower-wrp {
+						display: flex;
+						flex-direction: column;
+						gap: 10px;
+						margin-top: 10px;
+
+						.second-flower {
+							width: 170px;
+							height: 270px;
+							border-radius: 40px;
+						}
+						.second-flower2 {
+							width: 170px;
+							height: 230px;
+							border-radius: 70px;
+						}
+					}
+				}
+				.third-flower-wrp {
+					display: flex;
+					flex-direction: column;
+					gap: 10px;
+					margin-top: 10px;
+
+					.third-flower {
+						width: 170px;
+						height: 267px;
+						border-radius: 40px;
+					}
+					.third-flower-small {
+						width: 170px;
+						height: 230px;
+						border-radius: 70px;
+					}
+				}
+			}
 		}
 		.top-properties {
 			padding: 108px 0px 76px;
@@ -528,12 +611,15 @@
 			height: 697px;
 			display: flex;
 			flex-direction: row;
+
+			////
 			.container {
 				flex-direction: column;
 				.card-box {
 					position: relative;
-					margin-top: 64px;
+					margin-top: 34px;
 					display: flex;
+					height: 700px;
 					flex-direction: row;
 					.top-property-swiper {
 						width: 100%;
@@ -549,21 +635,70 @@
 					}
 					.top-card-box {
 						position: relative;
-						width: 300px;
-						height: 375px;
+						width: 408px;
+						height: 388px;
 						display: flex;
 						flex-direction: column;
 						transition: transform 0.3s;
+						border-radius: 20px 20px 20px 20px;
+						border: 1px solid rgba(196, 196, 196, 0.71);
+
 						&:hover {
 							opacity: 1;
 							transform: scale(1.05);
 						}
+						.img-wrp {
+							height: 320px;
+							width: 385px;
+							background-size: cover;
+							margin: 10px 10px 10px 10px;
+							border-radius: 20px 20px 20px 20px;
+							border: 1px solid rgba(196, 196, 196, 0.71);
+							// border: 1px solid red;
+						}
+
+						.under-info {
+							display: flex;
+							flex-direction: column;
+							margin: 10px 10px 10px 10px;
+							gap: 10px;
+
+							.info-wrp {
+								display: flex;
+								flex-direction: row;
+								justify-content: space-between;
+								text-align: center;
+								align-items: center;
+							}
+							.under-add {
+								display: flex;
+								flex-direction: row;
+								justify-content: space-between;
+
+								.arrow {
+									background-color: #e4e6e8;
+									border-radius: 20px;
+									padding: 4px;
+									margin-right: 10px;
+								}
+							}
+							.under-like {
+								display: flex;
+								flex-direction: row;
+							}
+						}
+						//////
 						.card-img {
 							position: relative;
-							width: 100%;
+							width: 200px;
 							height: 203px;
+							margin-left: 90px;
 							background-size: cover;
 							border-radius: 12px 12px 0px 0px;
+							display: flex;
+							border-radius: 20px 20px 20px 20px;
+							border: 1px solid rgba(196, 196, 196, 0.71);
+
 							cursor: pointer;
 							div {
 								position: absolute;

@@ -114,7 +114,7 @@ const PopularPropertyCard = (props: PopularPropertyCardProps) => {
 							<Typography className="view-cnt">{property?.propertyLikes}</Typography>
 						</div>
 					</div>
-					<p className={'desc2'}>{property.propertyAddress}</p>
+					<p className={'desc2'}>Address: {property.propertyAddress}</p>
 
 					<Divider sx={{ mt: '15px', mb: '17px' }} />
 					<div className={'bott'}>
