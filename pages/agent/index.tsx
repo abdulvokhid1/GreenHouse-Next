@@ -172,6 +172,23 @@ const AgentList: NextPage = ({ initialInput, ...props }: any) => {
 						</Box>
 					</Stack>
 					<Stack className={'card-wrap'}>
+						{/* <div className="agent-card">
+							<div>
+								<img src="img/profile/girl.svg" alt="" />
+							</div>
+							<div>
+								{agents?.length === 0 ? (
+									<div className={'no-data'}>
+										<img src="/img/icons/icoAlert.svg" alt="" />
+										<p>No Agents found!</p>
+									</div>
+								) : (
+									agents.map((agent: Member) => {
+										return <AgentCard agent={agent} key={agent._id} likeMemberHandler={likeMemberHandler} />;
+									})
+								)}
+							</div>
+						</div> */}
 						{agents?.length === 0 ? (
 							<div className={'no-data'}>
 								<img src="/img/icons/icoAlert.svg" alt="" />

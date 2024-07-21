@@ -161,7 +161,12 @@ export const MemberPanelList = (props: MemberPanelListType) => {
 									? `${REACT_APP_API_URL}/${member.memberImage}`
 									: '/img/profile/defaultUser.svg';
 								return (
-									<TableRow hover key={member?._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+									<TableRow
+										style={{ background: '#246069', borderRadius: '40px' }}
+										hover
+										key={member?._id}
+										sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+									>
 										<TableCell align="left">{member._id}</TableCell>
 
 										<TableCell align="left" className={'name'}>

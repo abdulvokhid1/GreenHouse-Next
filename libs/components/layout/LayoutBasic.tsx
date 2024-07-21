@@ -4,7 +4,7 @@ import useDeviceDetect from '../../hooks/useDeviceDetect';
 import Head from 'next/head';
 import Top from '../Top';
 import Footer from '../Footer';
-import { Stack } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import { getJwtToken, updateUserInfo } from '../../auth';
 import Chat from '../Chat';
 import { useReactiveVar } from '@apollo/client';
@@ -29,38 +29,38 @@ const withLayoutBasic = (Component: any) => {
 
 			switch (router.pathname) {
 				case '/property':
-					title = 'Property Search';
+					title = 'Plant Search';
 					desc = 'We are glad to see you again!';
 					bgColor = '#fafafa';
 
 					break;
 				case '/agent':
-					title = 'Agents';
-					desc = 'Home / For Rent';
+					title = 'Agents Page';
+					desc = '';
 					bgColor = '#fafafa';
 
 					break;
 				case '/agent/detail':
 					title = 'Agent Page';
-					desc = 'Home / For Rent';
+					desc = '';
 					bgColor = '#fafafa';
 
 					break;
 				case '/mypage':
 					title = 'my page';
-					desc = 'Home / For Rent';
+					desc = '';
 					bgColor = '#fafafa';
 
 					break;
 				case '/community':
-					title = 'Community';
-					desc = 'Home / For Rent';
+					title = 'Community Page';
+					desc = 't';
 					bgColor = '#fafafa';
 
 					break;
 				case '/community/detail':
 					title = 'Community Detail';
-					desc = 'Home / For Rent';
+					desc = '';
 					bgColor = '#fafafa';
 
 					break;
@@ -79,7 +79,7 @@ const withLayoutBasic = (Component: any) => {
 					break;
 				case '/member':
 					title = 'Member Page';
-					desc = 'Home / For Rent';
+					desc = '';
 					bgColor = '#fafafa';
 
 					break;
@@ -134,16 +134,21 @@ const withLayoutBasic = (Component: any) => {
 
 						<Stack
 							className={`header-basic ${authHeader && 'auth'}`}
-							style={{
-								backgroundColor: `${memoizedValues.bgColor}`,
-								backgroundSize: 'cover',
-								// boxShadow: 'inset 10px 40px 150px 40px rgb(24 22 36)',
-							}}
+							style={
+								{
+									// backgroundSize: 'cover',
+									// boxShadow: 'inset 10px 40px 150px 40px rgb(24 22 36)',
+								}
+							}
 						>
 							<Stack className={'container'}>
-								<strong style={{ color: 'black' }}>{t(memoizedValues.title)}</strong>
-								<span style={{ color: 'black' }}>{t(memoizedValues.desc)}</span>
+								<strong>{t(memoizedValues.title)}</strong>
+								<span>{t(memoizedValues.desc)}</span>
 							</Stack>
+
+							<Box className={'img-wrp'}>
+								<img style={{ width: '450px' }} src="img/banner/plant4.jpg" alt="" />
+							</Box>
 						</Stack>
 
 						<Stack id={'main'}>

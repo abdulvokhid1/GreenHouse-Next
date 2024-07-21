@@ -504,15 +504,21 @@ body::-webkit-scrollbar {
 		height: 557px;
 		display: flex;
 		flex-direction: row;
-		justify-content: center;
-		background: black;
+		justify-content: space-evenly;
+		background: #ffffff;
+		align-items: center;
+		text-align: center;
+
 		&.auth {
 			height: 300px;
 		}
 		.container {
-			margin-top: 175px;
+			margin-left: 75px;
+			// border: 1px solid red;
+			width: 500px;
+			height: 200px;
 			strong {
-				color: #fff;
+				color: #000;
 				font-family: $font;
 				font-size: 48px;
 				font-style: normal;
@@ -522,13 +528,22 @@ body::-webkit-scrollbar {
 				text-transform: capitalize;
 			}
 			span {
-				color: #fff;
+				color: #000;
 				font-family: $font;
 				font-size: 24px;
 				font-style: normal;
 				font-weight: 400;
 				line-height: 26px;
 			}
+		}
+
+		.img-wrp {
+			// border: 1px solid red;
+			width: 600px;
+			height: 400px;
+			margin-right: 225px;
+			background-size: cover;
+			margin-bottom: 30px;
 		}
 	}
 

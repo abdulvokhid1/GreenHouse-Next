@@ -44,13 +44,12 @@ const AgentCard = (props: AgentCardProps) => {
 							backgroundPosition: 'center',
 							backgroundRepeat: 'no-repeat',
 						}}
-					>
-						<div>{agent?.memberProperties} properties</div>
-					</Box>
+					></Box>
 				</Link>
 
 				<Stack className={'agent-desc'}>
 					<Box component={'div'} className={'agent-info'}>
+						{/* <span>Agent: </span> */}
 						<Link
 							href={{
 								pathname: '/agent/detail',
@@ -59,7 +58,14 @@ const AgentCard = (props: AgentCardProps) => {
 						>
 							<strong>{agent?.memberFullName ?? agent?.memberNick}</strong>
 						</Link>
-						<span>Agent</span>
+
+						<div className="plants">
+							<p>
+								{' '}
+								{agent?.memberProperties}
+								{agent?.memberProperties ? 'plants' : 'plant'}
+							</p>
+						</div>
 					</Box>
 					<Box component={'div'} className={'buttons'}>
 						<IconButton color={'default'}>

@@ -22,6 +22,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { sweetMixinErrorAlert } from '../sweetAlert';
 import { pink } from '@mui/material/colors';
+import { text } from 'stream/consumers';
 
 const style = {
 	position: 'absolute' as 'absolute',
@@ -211,7 +212,7 @@ const Top = () => {
 					<div>{t('Home')}</div>
 				</Link>
 				<Link href={'/property'}>
-					<div>{t('Properties')}</div>
+					<div>{t('Plants')}</div>
 				</Link>
 				<Link href={'/agent'}>
 					<div> {t('Agents')} </div>
@@ -239,7 +240,7 @@ const Top = () => {
 								<div>{t('Home')}</div>
 							</Link>
 							<Link href={'/property'}>
-								<div>{t('Properties')}</div>
+								<div>{t('Plants')}</div>
 							</Link>
 							<Link href={'/agent'}>
 								<div> {t('Agents')} </div>
@@ -295,11 +296,11 @@ const Top = () => {
 								<div>
 									<Button
 										style={{
-											width: '130px',
-											height: '35px',
+											width: '150px',
+											height: '40px',
 											background: '#45a358',
 											color: 'white',
-											borderRadius: '10px',
+											borderRadius: '15px',
 										}}
 										onClick={handleLOpen}
 									>
@@ -320,7 +321,9 @@ const Top = () => {
 												transform: 'translate(-50%, -50%)',
 												width: 500,
 												bgcolor: 'background.paper',
-												border: 'none',
+												border: '1px solid #b9b9b9',
+												borderShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;',
+												borderRadius: '20px',
 												boxShadow: 24,
 												p: 4,
 											}}

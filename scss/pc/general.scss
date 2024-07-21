@@ -162,11 +162,19 @@
 	margin-right: 27px;
 	margin-bottom: 34px;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	height: 200px;
+	width: 405px;
+	align-items: center;
+	text-align: center;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	// border: 1px solid black;
+	border-radius: 50px;
+	justify-content: space-evenly;
 	.agent-img {
-		border-radius: 12px;
-		width: 233px;
-		height: 273px;
+		border-radius: 72px;
+		width: 150px;
+		height: 150px;
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
 		cursor: pointer;
@@ -186,14 +194,17 @@
 		}
 	}
 	.agent-desc {
-		margin-top: 23px;
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
+		width: 200px;
+		height: 70px;
 		.agent-info {
 			display: flex;
-			flex-direction: column;
+			align-items: center;
+			flex-direction: row;
+			gap: 60px;
 			strong {
 				color: #181a20;
 				font-family: $font;
@@ -203,6 +214,24 @@
 				line-height: normal;
 				cursor: pointer;
 			}
+			.plants {
+				width: 90px;
+				background-color: #45a358;
+				height: 40px;
+				border-radius: 30px;
+
+				box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+				// border: 1px solid black;
+
+				p {
+					color: white;
+					text-align: center;
+					align-items: center;
+					justify-content: center;
+					margin-top: 8px;
+				}
+			}
+
 			span {
 				color: #181a20;
 				font-family: $font;
@@ -218,6 +247,8 @@
 			flex-direction: row;
 			justify-content: center;
 			align-items: center;
+			margin-right: 110px;
+
 			svg {
 				width: 24px;
 				height: 24px;

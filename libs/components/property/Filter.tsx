@@ -379,7 +379,7 @@ const Filter = (props: FilterType) => {
 		return (
 			<Stack className={'filter-main'}>
 				<Stack className={'find-your-home'} mb={'40px'}>
-					<Typography className={'title-main'}>Find Your Home</Typography>
+					<Typography className={'title-main'}>Find Your Plant</Typography>
 					<Stack className={'input-box'}>
 						<OutlinedInput
 							value={searchText}
@@ -453,7 +453,7 @@ const Filter = (props: FilterType) => {
 											}}
 										>
 											<Typography className="property-type">{location}</Typography>
-											<div>({location.length})</div>
+											{/* <div>({location.length})</div> */}
 										</div>
 									</label>
 								</Stack>
@@ -484,7 +484,7 @@ const Filter = (props: FilterType) => {
 				<Stack className={'find-your-home'}>
 					<Typography className={'title'}>Price Range</Typography>
 					<Stack className="square-year-input">
-						{/* <input
+						<input
 							type="number"
 							placeholder="$ min"
 							min={0}
@@ -505,9 +505,9 @@ const Filter = (props: FilterType) => {
 									propertyPriceHandler(e.target.value, 'end');
 								}
 							}}
-						/> */}
+						/>
 					</Stack>
-					<Box sx={{ width: 300 }}>
+					{/* <Box sx={{ width: 300 }}>
 						<Slider
 							getAriaLabel={() => 'Temperature range'}
 							value={searchFilter?.search?.pricesRange?.end}
@@ -522,7 +522,7 @@ const Filter = (props: FilterType) => {
 							getAriaValueText={valuetext}
 							color="secondary"
 						/>
-					</Box>
+					</Box> */}
 					{/* <p>value={searchFilter?.search?.pricesRange?.start ?? 0}</p> */}
 				</Stack>
 			</Stack>

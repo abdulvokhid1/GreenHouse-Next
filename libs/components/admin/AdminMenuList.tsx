@@ -113,7 +113,7 @@ const AdminMenuList = (props: any) => {
 	return (
 		<>
 			{menu_set.map((item, index) => (
-				<List className={'menu_wrap'} key={index} disablePadding>
+				<List style={{ background: '#246069', color: 'white' }} className={'menu_wrap'} key={index} disablePadding>
 					<ListItemButton
 						onClick={item.on_click}
 						component={'li'}

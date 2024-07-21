@@ -818,10 +818,10 @@
 			position: relative;
 			padding: 153px 0px 135px;
 			width: 100%;
-			height: 722px;
+			height: 672px;
 			display: flex;
 			flex-direction: row;
-			background: #f6f6f6;
+			background: #45a358;
 			.container {
 				position: relative;
 				flex-direction: column;
@@ -909,9 +909,11 @@
 			position: relative;
 			padding: 100px 0px 92px;
 			width: 100%;
-			height: 810px;
+			height: 680px;
 			display: flex;
 			flex-direction: row;
+			// border-radius: 20px 0px 0px 20px;
+			box-shadow: 0px 6px 10px 0px rgba(24, 26, 32, 0.07);
 			// background: #181a20;
 			.container {
 				flex-direction: column;
@@ -1000,7 +1002,7 @@
 			position: relative;
 			padding: 124px 0px 61px;
 			width: 100%;
-			height: 860px;
+			height: 700px;
 			display: flex;
 			flex-direction: row;
 			.container {
@@ -1048,6 +1050,7 @@
 							display: flex;
 							flex-direction: row;
 							flex-wrap: wrap;
+
 							.vertical-card {
 								margin-right: 12px;
 								margin-bottom: 18px;
@@ -1061,6 +1064,7 @@
 									background-size: cover;
 									background-repeat: round;
 									border-radius: 5px;
+
 									div {
 										width: 32px;
 										height: 32px;
@@ -1105,15 +1109,17 @@
 						height: auto;
 						display: flex;
 						flex-direction: column;
+
 						.horizontal-card {
 							display: flex;
 							flex-direction: row;
+
 							cursor: pointer;
 							margin-bottom: 34px;
 							img {
-								width: 180px;
+								width: 150px;
 								height: 111px;
-								border-radius: 7px;
+								border-radius: 70px;
 							}
 							div {
 								margin-left: 25px;

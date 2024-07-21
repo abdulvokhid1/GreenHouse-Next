@@ -70,32 +70,13 @@ const PropertyCard = (props: PropertyCardType) => {
 						</Stack>
 					</Stack>
 					<Stack className="options">
-						{/* <Stack className="option">
-							<img src="/img/icons/bed.svg" alt="" /> <Typography>{property.propertyBeds} bed</Typography>
-						</Stack>
-						<Stack className="option">
-							<img src="/img/icons/room.svg" alt="" /> <Typography>{property.propertyRooms} room</Typography>
-						</Stack> */}
 						<Stack className="option">
 							<Typography>${property.propertyDiscountPrice} </Typography>
 						</Stack>
 					</Stack>
 					<Stack className="divider"></Stack>
 					<Stack className="type-buttons">
-						<Stack className="type">
-							{/* <Typography
-								sx={{ fontWeight: 500, fontSize: '13px' }}
-								className={property.propertyRent ? '' : 'disabled-type'}
-							>
-								Rent
-							</Typography> */}
-							{/* <Typography
-								sx={{ fontWeight: 500, fontSize: '13px' }}
-								className={property.propertyBarter ? '' : 'disabled-type'}
-							>
-								Barter
-							</Typography> */}
-						</Stack>
+						<Stack className="type"></Stack>
 						{!recentlyVisited && (
 							<Stack className="buttons">
 								<IconButton color={'default'}>
