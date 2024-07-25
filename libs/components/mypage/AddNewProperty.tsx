@@ -19,7 +19,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 	const inputRef = useRef<any>(null);
 	const [insertPropertyData, setInsertPropertyData] = useState<PropertyInput>(initialValues);
 	const [propertyType, setPropertyType] = useState<PropertyType[]>(Object.values(PropertyType));
-	const [propertyCategory, setPropertyCategory] = useState<PropertyCategories[]>(Object.values(PropertyCategories));
+	const [propertyLocation, setPropertyLocation] = useState<PropertyCategories[]>(Object.values(PropertyCategories));
 	const token = getJwtToken();
 	const user = useReactiveVar(userVar);
 
@@ -52,7 +52,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 			// propertyRent: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyRent : false,
 			// propertyRooms: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyRooms : 0,
 			// propertyBeds: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyBeds : 0,
-			propertyDiscountPrice: getPropertyData?.getProperty ? getPropertyData?.getProperty?.discountPrice : 0,
+			propertyDiscountPrice: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyDiscountPrice : 0,
 			propertyDesc: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyDesc : '',
 			propertyImages: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyImages : [],
 		});
@@ -190,18 +190,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 					<Stack className="config">
 						<Stack className="description-box">
 							<Stack className="config-column">
-								<div
-									style={{
-										display: 'flex',
-										flexDirection: 'row',
-										alignItems: 'center',
-										textAlign: 'center',
-										gap: '5px',
-									}}
-								>
-									<Typography className="title">Title</Typography>
-									<img style={{ width: '10px', height: '15px' }} src="img/icons/star.svg" alt="" />
-								</div>
+								<Typography className="title">Title</Typography>
 								<input
 									type="text"
 									className="description-input"
@@ -215,18 +204,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 
 							<Stack className="config-row">
 								<Stack className="price-year-after-price">
-									<div
-										style={{
-											display: 'flex',
-											flexDirection: 'row',
-											alignItems: 'center',
-											textAlign: 'center',
-											gap: '5px',
-										}}
-									>
-										<Typography className="title">Price</Typography>
-										<img style={{ width: '10px', height: '15px' }} src="img/icons/star.svg" alt="" />
-									</div>
+									<Typography className="title">Price</Typography>
 									<input
 										type="text"
 										className="description-input"
@@ -238,18 +216,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 									/>
 								</Stack>
 								<Stack className="price-year-after-price">
-									<div
-										style={{
-											display: 'flex',
-											flexDirection: 'row',
-											alignItems: 'center',
-											textAlign: 'center',
-											gap: '5px',
-										}}
-									>
-										<Typography className="title">Select Type</Typography>
-										<img style={{ width: '10px', height: '15px' }} src="img/icons/star.svg" alt="" />
-									</div>
+									<Typography className="title">Select Type</Typography>
 									<select
 										className={'select-description'}
 										defaultValue={insertPropertyData.propertyType || 'select'}
@@ -277,18 +244,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 
 							<Stack className="config-row">
 								<Stack className="price-year-after-price">
-									<div
-										style={{
-											display: 'flex',
-											flexDirection: 'row',
-											alignItems: 'center',
-											textAlign: 'center',
-											gap: '5px',
-										}}
-									>
-										<Typography className="title">Select Category</Typography>
-										<img style={{ width: '10px', height: '15px' }} src="img/icons/star.svg" alt="" />
-									</div>
+									<Typography className="title">Select Location</Typography>
 									<select
 										className={'select-description'}
 										defaultValue={insertPropertyData.propertyCategories || 'select'}
@@ -302,9 +258,9 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 											<option selected={true} disabled={true} value={'select'}>
 												Select
 											</option>
-											{propertyCategory.map((category: any) => (
-												<option value={`${category}`} key={category}>
-													{category}
+											{propertyLocation.map((location: any) => (
+												<option value={`${location}`} key={location}>
+													{location}
 												</option>
 											))}
 										</>
@@ -330,7 +286,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 
 							<Stack className="config-row">
 								<Stack className="price-year-after-price">
-									<Typography className="title">Discount Price</Typography>
+									<Typography className="title">Square</Typography>
 									<select
 										className={'select-description'}
 										value={insertPropertyData.propertyDiscountPrice || 'select'}
@@ -368,7 +324,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 							</Stack>
 						</Stack>
 
-						<Typography className="upload-title">Upload photos of your product</Typography>
+						<Typography className="upload-title">Upload photos of your property</Typography>
 						<Stack className="images-box">
 							<Stack className="upload-box">
 								<svg xmlns="http://www.w3.org/2000/svg" width="121" height="120" viewBox="0 0 121 120" fill="none">
@@ -481,12 +437,8 @@ AddProperty.defaultProps = {
 		propertyTitle: '',
 		propertyPrice: 0,
 		propertyType: '',
-		PropertyCategories: '',
+		propertyCategories: '',
 		propertyAddress: '',
-		// propertyBarter: false,
-		// propertyRent: false,
-		// propertyRooms: 0,
-		// propertyBeds: 0,
 		propertyDiscountPrice: 0,
 		propertyDesc: '',
 		propertyImages: [],

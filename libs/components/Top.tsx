@@ -12,7 +12,6 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import { CaretDown, Cursor, TextAlignCenter, TextAlignJustify } from 'phosphor-react';
 import useDeviceDetect from '../hooks/useDeviceDetect';
 import Link from 'next/link';
-import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import { useReactiveVar } from '@apollo/client';
 import { userVar } from '../../apollo/store';
 import { Height, Logout, Margin } from '@mui/icons-material';
@@ -23,6 +22,7 @@ import Modal from '@mui/material/Modal';
 import { sweetMixinErrorAlert } from '../sweetAlert';
 import { pink } from '@mui/material/colors';
 import { text } from 'stream/consumers';
+import BasicPopover from './notify';
 
 const style = {
 	position: 'absolute' as 'absolute',
@@ -574,7 +574,7 @@ const Top = () => {
 							)}
 
 							<div className={'lan-box'}>
-								{user?._id && <NotificationsOutlinedIcon className={'notification-icon'} />}
+								{user?._id && <BasicPopover />}
 								<Button
 									disableRipple
 									className="btn-lang"
