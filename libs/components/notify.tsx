@@ -1,29 +1,17 @@
 import * as React from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
-import { Comment } from '../types/comment/comment';
 import { useQuery, useReactiveVar } from '@apollo/client';
-import { GET_COMMENTS, GET_NOTIFICATIONS, GET_PROPERTIES, GET_PROPERTY } from '../../apollo/user/query';
+import { GET_NOTIFICATIONS, GET_PROPERTIES, GET_PROPERTY } from '../../apollo/user/query';
 import { T } from '../types/common';
-import { useEffect, useState } from 'react';
-import { CommentInput, CommentsInquiry } from '../types/comment/comment.input';
-import { Stack } from 'phosphor-react';
-import { useRouter } from 'next/router';
-import { CommentGroup } from '../enums/comment.enum';
+import { useState } from 'react';
 import { userVar } from '../../apollo/store';
-import { Property } from '../types/property/property';
-import { Direction } from '../enums/common.enum';
-import { PropertiesInquiry } from '../types/property/property.input';
 import { Notification } from '../types/notification/notifiaction';
+import { Badge, Box } from '@mui/material';
 
 const BasicPopover = ({ initialInput, initialComment }: any) => {
 	const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
-	const [commentInquiry, setCommentInquiry] = useState<CommentsInquiry>(initialComment);
-	const [propertyComments, setPropertyComments] = useState<Comment[]>([]);
-	const [commentTotal, setCommentTotal] = useState<number>(0);
-	const [propertyId, setPropertyId] = useState<string | null>(null);
 	const user = useReactiveVar(userVar);
 	const [notification, setNotification] = useState<Notification[]>([]);
 
@@ -62,24 +50,33 @@ const BasicPopover = ({ initialInput, initialComment }: any) => {
 	console.log('user', user);
 	return (
 		<div>
-			<NotificationsOutlinedIcon
-				style={{ background: 'black', cursor: 'pointer' }}
-				className={'notification-icon'}
-				onClick={handleClick}
-			/>
+			<Badge badgeContent={notification.length} color="secondary">
+				<NotificationsOutlinedIcon
+					style={{ background: '#45a358', cursor: 'pointer', borderRadius: '20px', padding: '2px' }}
+					className={'notification-icon'}
+					onClick={handleClick}
+				/>
+			</Badge>
 			<Popover
 				id={id}
 				open={open}
 				anchorEl={anchorEl}
 				onClose={handleClose}
 				anchorOrigin={{
-					vertical: 'bottom',
+					vertical: 'top',
+					horizontal: 'right',
+				}}
+				transformOrigin={{
+					vertical: 'top',
 					horizontal: 'left',
 				}}
 			>
-				<Typography sx={{ p: 2, width: '200px', height: '300px', background: 'purple', color: 'white' }}>
+				<Box p={2}>
+					<p>You have {notification.length} new notifications</p>
+				</Box>
+				<Typography sx={{ p: 2, width: '500px', height: '100%', color: 'black', border: '2px solid green' }}>
 					{notification?.map((notify: Notification) => {
-						return <div>{notify.notificationDesc}</div>;
+						return <div>{notify.receiverId}</div>;
 					})}
 				</Typography>
 			</Popover>
