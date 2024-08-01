@@ -4,6 +4,25 @@ import { gql } from '@apollo/client';
  *         MEMBER         *
  *************************/
 
+export const MARK_NOTIFICATION_AS_READ = gql`
+	mutation MarkNotificationAsRead($notificationId: String!) {
+		markNotificationAsRead(notificationId: $notificationId)
+	}
+`;
+// export const CREATE_MESSAGE = gql`
+// 	mutation CreateMessage($input: MessageInput!) {
+// 		createMessage(input: $input) {
+// 			_id
+// 			name
+// 			phone
+// 			email
+// 			message
+// 			messageRefId
+// 			memberId
+// 			createdAt
+// 		}
+// 	}
+// `;
 export const SIGN_UP = gql`
 	mutation Signup($input: MemberInput!) {
 		signup(input: $input) {

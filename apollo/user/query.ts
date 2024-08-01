@@ -4,9 +4,9 @@ import { gql } from '@apollo/client';
  *         MEMBER         *
  *************************/
 
-export const GET_NOTIFICATIONS = gql`
-	query GetNotifications {
-		getNotifications {
+export const GET_NOTIFICATIONS_BY_USER_ID = gql`
+	query GetNotificationsByUserId($userId: String!) {
+		getNotificationsByUserId(userId: $userId) {
 			_id
 			notificationType
 			notificationStatus
@@ -18,33 +18,6 @@ export const GET_NOTIFICATIONS = gql`
 			propertyId
 			articleId
 			createdAt
-			memberData {
-				_id
-				memberType
-				memberStatus
-				memberAuthType
-				memberPhone
-				memberNick
-				memberFullName
-				memberImage
-				memberAddress
-				memberDesc
-				memberProperties
-				memberArticles
-				memberFollowers
-				memberFollowings
-				memberPoints
-				memberLikes
-				memberViews
-				memberComments
-				memberRank
-				memberWarnings
-				memberBlocks
-				deletedAt
-				createdAt
-				updatedAt
-				accessToken
-			}
 		}
 	}
 `;
@@ -705,6 +678,25 @@ export const GET_MEMBER_FOLLOWINGS = gql`
 			metaCounter {
 				total
 			}
+		}
+	}
+`;
+
+export const MARK_NOTIFICATION_READ = gql`
+	mutation MarkNotificationAsRead($notificationId: String!) {
+		markNotificationAsRead(notificationId: $notificationId)
+	}
+`;
+
+export const GET_NOTICE = gql`
+	query GetNotice {
+		getNotice {
+			_id
+			noticeCategory
+			noticeStatus
+			noticeTitle
+			noticeContent
+			createdAt
 		}
 	}
 `;

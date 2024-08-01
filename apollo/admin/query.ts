@@ -209,3 +209,19 @@ export const GET_COMMENTS = gql`
 		}
 	}
 `;
+/**************************
+ *         FAQ        *
+ *************************/
+
+export const GET_FAQ = gql`
+	query GetFaq {
+		getFaq {
+			_id
+			faqCategory
+			faqStatus
+			faqQuestion
+			faqAnswer
+			createdAt
+		}
+	}
+`;

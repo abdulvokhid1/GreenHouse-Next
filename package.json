@@ -65,6 +65,7 @@
 		"react-telegram-auth": "^1.0.3",
 		"react-tree": "^0.0.4",
 		"sass": "^1.49.9",
+		"dayjs": "^1.11.12",
 		"sass-loader": "^12.6.0",
 		"slick-carousel": "^1.8.1",
 		"styled-components": "^5.3.3",
