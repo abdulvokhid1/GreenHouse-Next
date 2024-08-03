@@ -31,8 +31,9 @@ import { GET_PROPERTIES, GET_PROPERTY, GET_COMMENTS } from '../../apollo/user/qu
 import { T } from '../../libs/types/common';
 import { Direction, Message } from '../../libs/enums/common.enum';
 import { sweetErrorHandling, sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../libs/sweetAlert';
-import { CREATE_COMMENT, LIKE_TARGET_PROPERTY } from '../../apollo/user/mutation';
+import { CREATE_COMMENT, CREATE_MESSAGE, LIKE_TARGET_PROPERTY } from '../../apollo/user/mutation';
 import BasicPopover from '../../libs/components/notify';
+import { ContactInput } from '../../libs/types/contact/contact.input';
 
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
@@ -58,16 +59,16 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 		commentContent: '',
 		commentRefId: '',
 	});
-	// const [insertMessageData, setInsertMessageData] = useState<MessageInput>({
-	// 	name: '',
-	// 	phone: '',
-	// 	email: '',
-	// 	message: '',
-	// 	messageRefId: `${property?.memberData?._id}`,
-	// });
+	const [insertMessageData, setInsertMessageData] = useState<ContactInput>({
+		name: '',
+		phone: '',
+		email: '',
+		message: '',
+		contactRefId: `${property?.memberData?._id}`,
+	});
 	const [likeTargetProperty] = useMutation(LIKE_TARGET_PROPERTY);
 	const [createComment] = useMutation(CREATE_COMMENT);
-	// const [createMessage] = useMutation(CREATE_MESSAGE);
+	const [createMessage] = useMutation(CREATE_MESSAGE);
 	const {
 		loading: getPropertyLoading,
 		data: getPropertyData,
@@ -141,10 +142,10 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 				...insertCommentData,
 				commentRefId: router.query.id as string,
 			});
-			// setInsertMessageData({
-			// 	...insertMessageData,
-			// 	messageRefId: router.query.id as string,
-			// });
+			setInsertMessageData({
+				...insertMessageData,
+				contactRefId: router.query.id as string,
+			});
 		}
 	}, [router]);
 
@@ -205,29 +206,29 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 			console.log(err);
 		}
 	};
-	// const createMessageHandler = async () => {
-	// 	try {
-	// 		if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
-	// 		await createMessage({ variables: { input: insertMessageData } });
+	const createMessageHandler = async () => {
+		try {
+			if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
+			await createMessage({ variables: { input: insertMessageData } });
 
-	// 		setInsertMessageData({ ...insertMessageData, name: '', phone: '', email: '', message: '' });
+			setInsertMessageData({ ...insertMessageData, name: '', phone: '', email: '', message: '' });
 
-	// 		// await getCommentsRefetch({ input: commentInquiry });
-	// 	} catch (err: any) {
-	// 		await sweetErrorHandling(err);
-	// 	}
-	// };
+			// await getCommentsRefetch({ input: commentInquiry });
+		} catch (err: any) {
+			await sweetErrorHandling(err);
+		}
+	};
 
-	// const doDisabledCheck = () => {
-	// 	if (
-	// 		insertMessageData.name === '' ||
-	// 		insertMessageData.phone === '' ||
-	// 		insertMessageData.email === '' ||
-	// 		insertMessageData.message === ''
-	// 	) {
-	// 		return true;
-	// 	}
-	// };
+	const doDisabledCheck = () => {
+		if (
+			insertMessageData.name === '' ||
+			insertMessageData.phone === '' ||
+			insertMessageData.email === '' ||
+			insertMessageData.message === ''
+		) {
+			return true;
+		}
+	};
 
 	if (getPropertiesLoading) {
 		return (
@@ -456,10 +457,10 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 									<input
 										type={'text'}
 										placeholder={'Enter your name'}
-										// value={insertMessageData.name}
-										// onChange={({ target: { value } }: any) => {
-										// 	setInsertMessageData({ ...insertMessageData, name: value });
-										// }}
+										value={insertMessageData.name}
+										onChange={({ target: { value } }: any) => {
+											setInsertMessageData({ ...insertMessageData, name: value });
+										}}
 									/>
 								</Stack>
 								<Stack className={'info-box'}>
@@ -467,10 +468,10 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 									<input
 										type={'text'}
 										placeholder={'Enter your phone'}
-										// value={insertMessageData.phone}
-										// onChange={({ target: { value } }: any) => {
-										// 	setInsertMessageData({ ...insertMessageData, phone: value });
-										// }}
+										value={insertMessageData.phone}
+										onChange={({ target: { value } }: any) => {
+											setInsertMessageData({ ...insertMessageData, phone: value });
+										}}
 									/>
 								</Stack>
 								<Stack className={'info-box'}>
@@ -478,27 +479,24 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 									<input
 										type={'text'}
 										placeholder={'creativelayers088'}
-										// value={insertMessageData.email}
-										// onChange={({ target: { value } }: any) => {
-										// 	setInsertMessageData({ ...insertMessageData, email: value });
-										// }}
+										value={insertMessageData.email}
+										onChange={({ target: { value } }: any) => {
+											setInsertMessageData({ ...insertMessageData, email: value });
+										}}
 									/>
 								</Stack>
 								<Stack className={'info-box'}>
 									<Typography className={'sub-title'}>Message</Typography>
 									<textarea
 										placeholder={'Hello, I am interested in \n' + '[Renovated property at  floor]'}
-										// value={insertMessageData.message}
-										// onChange={({ target: { value } }: any) => {
-										// 	setInsertMessageData({ ...insertMessageData, message: value });
-										// }}
+										value={insertMessageData.message}
+										onChange={({ target: { value } }: any) => {
+											setInsertMessageData({ ...insertMessageData, message: value });
+										}}
 									></textarea>
 								</Stack>
 								<Stack className={'info-box'}>
-									<Button
-										className={'send-message'}
-										// disabled={doDisabledCheck()} onClick={createMessageHandler}
-									>
+									<Button className={'send-message'} disabled={doDisabledCheck()} onClick={createMessageHandler}>
 										<Typography className={'title'}>Send Message</Typography>
 										<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
 											<g clipPath="url(#clip0_6975_593)">

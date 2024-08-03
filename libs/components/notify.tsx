@@ -15,6 +15,7 @@ import { NotificationStatus } from '../enums/notification.enum';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { TextAlignCenter } from 'phosphor-react';
+import MarkChatUnreadIcon from '@mui/icons-material/MarkChatUnread';
 
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
@@ -154,7 +155,25 @@ export default function BasicPopover() {
 										width: '400px',
 									}}
 								>
-									<Typography>{ele.notificationTitle}</Typography>
+									<div
+										style={{
+											// border: '1px solid red',
+											background: '#45a358',
+											color: 'white',
+											marginBottom: '15px',
+											padding: '5px',
+											borderRadius: '15px',
+											display: 'flex',
+											flexDirection: 'row',
+											gap: '8px',
+											textAlign: 'center',
+											alignItems: 'center',
+											// justifyContent: 'center',
+										}}
+									>
+										<MarkChatUnreadIcon sx={{ width: '16px' }} />
+										<Typography>{ele.notificationTitle}</Typography>
+									</div>
 									<Typography>{ele.notificationDesc}</Typography>
 									<Typography variant="body2" color="textSecondary">
 										{dayjs(ele.createdAt).fromNow()}

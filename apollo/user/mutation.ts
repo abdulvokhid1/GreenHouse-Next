@@ -358,3 +358,17 @@ export const UNSUBSCRIBE = gql`
 		}
 	}
 `;
+
+export const CREATE_MESSAGE = gql`
+	mutation CreateMessage($input: ContactInput!) {
+		createMessage(input: $input) {
+			_id
+			name
+			phone
+			email
+			message
+			contactRefId
+			memberId
+		}
+	}
+`;

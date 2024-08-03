@@ -159,9 +159,7 @@ export const FaqArticlesPanelList = (props: FaqArticlesPanelListType) => {
 									</TableCell>
 									<TableCell align="left">{ele.faqCategory}</TableCell>
 									<TableCell align="center">
-										<Button onClick={(e: any) => handleMenuIconClick(e, index)} className={'badge success'}>
-											{ele.faqStatus}
-										</Button>
+										<Button className={'badge success'}>{ele.faqStatus}</Button>
 
 										<Menu
 											className={'menu-modal'}
