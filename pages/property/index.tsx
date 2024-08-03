@@ -175,7 +175,7 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 						</Stack>
 						<Stack className="main-config" mb={'76px'}>
 							<Stack className={'list-config'}>
-								{console.log('properties', properties)}
+								{/* {console.log('properties', properties)} */}
 								{properties?.length === 0 ? (
 									<div className={'no-data'}>
 										<img src="/img/icons/icoAlert.svg" alt="" />

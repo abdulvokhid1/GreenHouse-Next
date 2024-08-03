@@ -102,7 +102,7 @@ const withLayoutBasic = (Component: any) => {
 			return (
 				<>
 					<Head>
-						<title>Nestar</title>
+						<title>GreenShop</title>
 						<meta name={'title'} content={`Nestar`} />
 					</Head>
 					<Stack id="mobile-wrap">
@@ -124,7 +124,7 @@ const withLayoutBasic = (Component: any) => {
 			return (
 				<>
 					<Head>
-						<title>Nestar</title>
+						<title>GreenShop</title>
 						<meta name={'title'} content={`Nestar`} />
 					</Head>
 					<Stack id="pc-wrap">
@@ -146,9 +146,9 @@ const withLayoutBasic = (Component: any) => {
 								<span>{t(memoizedValues.desc)}</span>
 							</Stack>
 
-							<Box className={'img-wrp'}>
+							<div className={'img-wrp'}>
 								<img style={{ width: '450px' }} src="img/banner/plant4.jpg" alt="" />
-							</Box>
+							</div>
 						</Stack>
 
 						<Stack id={'main'}>

@@ -64,7 +64,7 @@ const Footer = () => {
 					</Stack>
 				</Stack>
 				<Stack className={'second'}>
-					<span>© Nestar - All rights reserved. Nestar {moment().year()}</span>
+					<span>© GreenShop - All rights reserved. Nestar {moment().year()}</span>
 				</Stack>
 			</Stack>
 		);
@@ -134,27 +134,27 @@ const Footer = () => {
 				</Stack> */}
 				<Stack className={'main'}>
 					<Stack className={'plant-info'}>
-						<Box className={'plant-care'}>
+						<div className={'plant-care'}>
 							<img style={{ width: '85px', height: '85px', marginLeft: '10px' }} src="/img/flag/garden.svg" alt="" />
 							<h4>Garden Care</h4>
 							<p>We are an online plant shop offering a wide range of cheap and trendy plants.</p>
-						</Box>
+						</div>
 						<div style={{ border: '1px solid #45a358', height: '187px', marginTop: '15px' }}></div>{' '}
-						<Box className={'plant-care'}>
+						<div className={'plant-care'}>
 							<img style={{ width: '85px', height: '85px', marginLeft: '10px' }} src="/img/icons/fat.svg" alt="" />
 							<h4>Plant Renovation</h4>
 							<p>We are an online plant shop offering a wide range of cheap and trendy plants.</p>
-						</Box>
+						</div>
 						<div style={{ border: '1px solid #45a358', height: '187px', marginTop: '15px' }}></div>
-						<Box className={'plant-care'}>
+						<div className={'plant-care'}>
 							<img style={{ width: '85px', height: '85px', marginLeft: '10px' }} src="/img/flag/garden.svg" alt="" />
 							<h4>Watering Graden</h4>
 							<p>We are an online plant shop offering a wide range of cheap and trendy plants.</p>
-						</Box>
+						</div>
 						<div style={{ border: '1px solid #45a358', height: '187px', marginTop: '15px' }}></div>
 						<Stack className={'newsletter'}>
 							<h4>Would you like to join newsletters?</h4>
-							<Box style={{ marginTop: '15px' }}>
+							<div style={{ marginTop: '15px' }}>
 								<input
 									type="text"
 									placeholder="Enter your email address..."
@@ -175,7 +175,7 @@ const Footer = () => {
 								>
 									Subscribe
 								</button>
-							</Box>
+							</div>
 							<p className="some-txt">
 								We usually post offers and challenges in newsletter. We’re your online houseplant destination. We offer
 								a wide range of houseplants and accessories shipped directly from our (green)house to yours!
@@ -186,59 +186,59 @@ const Footer = () => {
 						<div style={{ marginLeft: '20px' }}>
 							<img src="/img/logo/Logo.png" alt="" />
 						</div>
-						<Box className={'contact-box'}>
+						<div className={'contact-box'}>
 							<img src="/img/icons/Location.png" alt="" className="icon" />
 							<div style={{ width: '176px', height: '44px' }}>
 								<p>70 West Buckingham Ave. Farmingdale, NY 11735</p>
 							</div>
-						</Box>
-						<Box className={'contact-box'}>
+						</div>
+						<div className={'contact-box'}>
 							<img src="/img/icons/message.png" alt="" className="icon" />
 							<p>contact@greenshop.com</p>
-						</Box>
-						<Box className={'contact-box'}>
+						</div>
+						<div className={'contact-box'}>
 							<img src="/img/icons/calling.png" alt="" className="icon" />
 							<p>+821055049698</p>
-						</Box>
+						</div>
 					</Stack>
 					<Stack className={'category'}>
-						<Box className={'first-box'}>
+						<div className={'first-box'}>
 							<h1>My Account</h1>
 							<p>My Account</p>
 							<p>Our stores</p>
 							<p>Contact us</p>
 							<p>Career</p>
 							<p>Specials</p>
-						</Box>
-						<Box className={'first-box'}>
+						</div>
+						<div className={'first-box'}>
 							<h1>Help & Guide</h1>
 							<p>Help Center</p>
 							<p>How to Buy</p>
 							<p>Shipping & Delivery</p>
 							<p>Product Policy</p>
 							<p>How to Return</p>
-						</Box>
+						</div>
 
-						<Box className={'first-box'}>
+						<div className={'first-box'}>
 							<h1>Categories</h1>
 							<p>House Plants</p>
 							<p>Seeds</p>
 							<p>Small Plants</p>
 							<p>Career</p>
 							<p>Accessories</p>
-						</Box>
-						<Box className={'last-box'}>
+						</div>
+						<div className={'last-box'}>
 							<h1>Social Media</h1>
-							<Box className={'media'}>
+							<div className={'media'}>
 								<img className="social" src="/img/icons/facebook.png" alt="" />
 								<img className="social" src="/img/icons/instagram.png" alt="" />
 								<img className="social" src="/img/icons/twitter.png" alt="" />
 								<img className="social" src="/img/icons/linkedin.png" alt="" />
 								<img className="social" src="/img/icons/union.png" alt="" />
-							</Box>
+							</div>
 							<h1 style={{ marginTop: '25px' }}>We Accept</h1>
 							<img src="/img/icons/payment.png" alt="" style={{ marginTop: '20px' }} />
-						</Box>
+						</div>
 					</Stack>
 				</Stack>
 				<div className="reserved">© 2024 GreenShop. All Rights Reserved.</div>

@@ -170,7 +170,7 @@
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	// border: 1px solid black;
 	border-radius: 50px;
-	justify-content: space-evenly;
+	justify-content: space-around;
 	.agent-img {
 		border-radius: 72px;
 		width: 150px;
@@ -195,16 +195,17 @@
 	}
 	.agent-desc {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		width: 200px;
+		text-align: center;
+		width: 330px;
 		height: 70px;
 		.agent-info {
 			display: flex;
 			align-items: center;
 			flex-direction: row;
-			gap: 60px;
+			gap: 20px;
 			strong {
 				color: #181a20;
 				font-family: $font;
@@ -242,12 +243,10 @@
 			}
 		}
 		.buttons {
-			width: auto;
+			width: 100px;
 			display: flex;
 			flex-direction: row;
-			justify-content: center;
 			align-items: center;
-			margin-right: 110px;
 
 			svg {
 				width: 24px;

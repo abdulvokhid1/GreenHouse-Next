@@ -23,9 +23,11 @@ dayjs.locale('ko');
 export default function BasicPopover() {
 	const user = useReactiveVar(userVar);
 	const router = useRouter();
-	const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+	const [anchorEl, setAnchorEl] = React.useState<SVGSVGElement | null>(null);
 	const [notification, setNotification] = React.useState<Notification[]>([]);
-	const handleClick = (event: React.MouseEvent<HTMLButtonElement>, notificationId: string) => {
+
+	const handleClick = (event: React.MouseEvent<SVGSVGElement>) => {
+		//notificationId: string
 		setAnchorEl(event.currentTarget);
 		// markNotificationsAsRead();
 	};
@@ -109,7 +111,7 @@ export default function BasicPopover() {
 					horizontal: 'left',
 				}}
 			>
-				<Box
+				<div
 					style={{
 						background: '#45a358',
 						color: 'white',
@@ -141,7 +143,7 @@ export default function BasicPopover() {
 						}{' '}
 						unread notifications!
 					</p>
-				</Box>
+				</div>
 				{notification?.map((ele: Notification) => {
 					if (ele.receiverId === user._id) {
 						return (
