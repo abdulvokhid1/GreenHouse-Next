@@ -1,3 +1,5 @@
+version: '3.3'
+
 services:
   greenshop-next:
     container_name: greenshop-next
